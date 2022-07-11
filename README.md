@@ -10,3 +10,5 @@ NAVN!
 ER!
 
 STEN!
+
+OG!
