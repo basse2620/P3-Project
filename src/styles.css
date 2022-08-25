@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.mainHeader{
+    overflow: auto;
+    display:flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+}
+.mainHeaderLow{
+    align-items: center;
+    background-color: lightgray;
+
+}
+.mainHeaderLowButton{
+    width: 100%;
+    margin: 0px 20px 0px 20px;
+    height: auto;
+    padding: 5px;
+    background-color: lightgray;
+}
+.mainHeaderUpper{
+    height: 50px;
+}
+.AllAround{
+    border: 5px solid white;
+}
+.searchBar{
+    height: 50%;
+    width: 50%;
+    margin-top: 10px;
+}
