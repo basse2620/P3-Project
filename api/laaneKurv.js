@@ -1,5 +1,5 @@
-class LaaneKurv{
-    constructor(FK_kurvId,FK_filmId,pris,rabat,totalPris){
+class LaaneKurv {
+    constructor(FK_kurvId, FK_filmId, pris, rabat, totalPris) {
         this.FK_kurvId = FK_kurvId;
         this.FK_filmId = FK_filmId;
         this.pris = pris;

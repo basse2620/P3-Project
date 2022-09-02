@@ -1,5 +1,5 @@
-class Bruger{
-    constructor(PK_brugernavn,password,fornavn,efternavn,saglsScore,FK_addresseId,FK_kortNr,FK_typeId){
+class Bruger {
+    constructor(PK_brugernavn, password, fornavn, efternavn, saglsScore, FK_addresseId, FK_kortNr, FK_typeId) {
         this.PK_brugernavn = PK_brugernavn;
         this.password = password;
         this.fornavn = fornavn;

@@ -1,5 +1,5 @@
-class LaaneKurv{
-    constructor(FK_ordreId,FK_filmId,pris,rabat,totalPris,udlaansDato,returDato,FK_statusId){
+class LaaneOrdreDetaljer {
+    constructor(FK_ordreId, FK_filmId, pris, rabat, totalPris, udlaansDato, returDato, FK_statusId) {
         this.FK_ordreId = FK_ordreId;
         this.FK_filmId = FK_filmId;
         this.pris = pris;
@@ -11,4 +11,4 @@ class LaaneKurv{
     }
 }
 
-module.exports = LaaneKurv;
+module.exports = LaaneOrdreDetaljer;

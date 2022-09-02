@@ -1,5 +1,5 @@
 const config = {
-    user:'sa',
+    user: 'sa',
     password: 'Passw0rd',
     server: '127.0.0.1',
     database: 'BlockFlix',

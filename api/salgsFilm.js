@@ -1,5 +1,5 @@
-class SalgsFilm{
-    constructor(PK_filmId,filmNavn,pris,rabat,stand){
+class SalgsFilm {
+    constructor(PK_filmId, filmNavn, pris, rabat, stand) {
         this.PK_filmId = PK_filmId;
         this.filmNavn = filmNavn;
         this.pris = pris;

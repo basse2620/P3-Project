@@ -1,5 +1,5 @@
-class By{
-    constructor(PK_postNr,byNavn){
+class By {
+    constructor(PK_postNr, byNavn) {
         this.PK_postNr = PK_postNr;
         this.byNavn = byNavn;
     }

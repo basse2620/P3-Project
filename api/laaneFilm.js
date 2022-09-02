@@ -1,5 +1,5 @@
-class LaaneFilm{
-    constructor(PK_filmId,filmNavn,pris,rabat,meangde,udlaant,resevert,forventetDato){
+class LaaneFilm {
+    constructor(PK_filmId, filmNavn, pris, rabat, meangde, udlaant, resevert, forventetDato) {
         this.PK_filmId = PK_filmId;
         this.filmNavn = filmNavn;
         this.pris = pris;
