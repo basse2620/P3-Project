@@ -59,7 +59,7 @@ Create Table SalgsFilm(
 PK_filmId int Identity Primary Key,
 filmNavn nvarchar(255) not null,
 pris decimal not null,
-rabat decimal not null,
+rabat decimal default 0 not null,
 stand int not null
 )
 
@@ -131,7 +131,7 @@ Create Table LaaneKurv(
 FK_kurvId int Foreign Key References Kurv(PK_kurvId),
 FK_filmId int Foreign Key References LaaneFilm(PK_filmId),
 pris decimal not null,
-rabat decimal not null,
+rabat decimal default 0 not null,
 totalPris as (pris - rabat),
 Primary Key (FK_kurvId, FK_filmId)
 )
@@ -140,7 +140,7 @@ Create Table SalgsKurv(
 FK_kurvId int Foreign Key References Kurv(PK_kurvId),
 FK_filmId int Foreign Key References SalgsFilm(PK_filmId),
 pris decimal not null,
-rabat decimal not null,
+rabat decimal default 0 not null,
 meangde int not null,
 totalPris as ((pris - rabat) * meangde),
 Primary Key (FK_kurvId, FK_filmId)
@@ -165,7 +165,7 @@ Create Table LaaneOrdreDetaljer(
 FK_ordreId int Foreign Key References [Ordre](PK_ordreId),
 FK_filmId int Foreign Key References LaaneFilm(PK_filmId),
 pris decimal not null,
-rabat decimal not null,
+rabat decimal default 0 not null,
 totalPris as (pris - rabat),
 udlaansDato datetime default current_timestamp not null,
 returDato datetime default dateadd(dd, 14, current_timestamp) not null,
@@ -177,7 +177,7 @@ Create Table SalgsOrdreDetaljer(
 FK_ordreId int Foreign Key References [Ordre](PK_ordreId),
 FK_filmId int Foreign Key References SalgsFilm(PK_filmId),
 pris decimal not null,
-rabat decimal not null,
+rabat decimal default 0 not null,
 meangde int not null,
 totalPris as ((pris - rabat) * meangde),
 Primary Key (FK_ordreId, FK_filmId)
