@@ -56,7 +56,8 @@ async function deleteLaaneKurv(laaneKurv) {
         let pool = await sql.connect(config);
         let deleteLaaneKurv = await pool.request()
             .input('kurvId', sql.Int, laaneKurv.kurvId)
-            .query("Delete From LaaneKurv where FK_kurvId = @kurvId");
+            .input('filmId', sql.Int, laaneKurv.filmId)
+            .query("Delete From LaaneKurv where FK_kurvId = @kurvId and FK_filmId = @filmId");
         return deleteLaaneKurv.recordsets;
     }
     catch (err) {

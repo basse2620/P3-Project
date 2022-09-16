@@ -27,8 +27,8 @@ router.get('/post-nr/:postNr', (req, res) => {
 })
 
 router.post('/', [
-    check('addresse').notEmpty().withMessage('Addressen maa ikke være tom'),
-    check('postNr').notEmpty().withMessage('Post Nr maa ikke for tom')
+    check('addresse').notEmpty().withMessage('Addressen maa ikke vaere tom'),
+    check('postNr').notEmpty().withMessage('Post Nr maa ikke vaere tom')
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -43,8 +43,8 @@ router.post('/', [
 })
 
 router.patch('/', [
-    check('addresse').notEmpty().withMessage('Addressen maa ikke være tom'),
-    check('postNr').notEmpty().withMessage('Post Nr maa ikke for tom')
+    check('addresse').notEmpty().withMessage('Addressen maa ikke vaere tom'),
+    check('postNr').notEmpty().withMessage('Post Nr maa ikke vaere tom')
 ], (req, res) => {
 
     const errors = validationResult(req);

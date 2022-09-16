@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 
 const addresseRoute = require("./api/routes/addresse");
 const brugerRoute = require("./api/routes/bruger");
-const brugerTypeRoute = require("./api/routes/brugerType");
 const byRoute = require("./api/routes/by");
 const genreRoute = require("./api/routes/genre");
 const instruktoerRoute = require("./api/routes/instruktoer");
@@ -39,25 +38,24 @@ app.use((request, response, next) => {
 
 app.use("/addresse", addresseRoute);
 app.use("/bruger", brugerRoute);
-app.use("/brugerType", brugerTypeRoute);
 app.use("/by", byRoute);
 app.use("/genre", genreRoute);
 app.use("/instruktoer", instruktoerRoute);
-app.use("/kreditKort", kreditKortRoute);
+app.use("/kredit-kort", kreditKortRoute);
 app.use("/kurv", kurvRoute);
-app.use("/laaneBilleder", laaneBillederRoute);
-app.use("/laaneFilm", laaneFilmRoute);
-app.use("/laaneFilmGenre", laaneFilmGenreRoute);
-app.use("/laaneFilmInstruktoer", laaneFilmInstruktoerRoute);
-app.use("/laaneOrdreDetaljer", laaneKurvRoute);
-app.use("/laaneOrdreDetaljer", laaneOrdreDetaljerRoute);
+app.use("/laane-billeder", laaneBillederRoute);
+app.use("/laane-film", laaneFilmRoute);
+app.use("/laane-film-genre", laaneFilmGenreRoute);
+app.use("/laane-film-instruktoer", laaneFilmInstruktoerRoute);
+app.use("/laane-ordre-detaljer", laaneKurvRoute);
+app.use("/laane-ordre-detaljer", laaneOrdreDetaljerRoute);
 app.use("/ordre", ordreRoute);
-app.use("/salgsBilleder", salgsBillederRoute);
-app.use("/salgsFilm", salgsFilmRoute);
-app.use("/salgsFilmGenre", salgsFilmGenreRoute);
-app.use("/salgsFilmInstruktoer", salgsFilmInstruktoerRoute);
-app.use("/salgsKurv", salgsKurvRoute);
-app.use("/salgsOrdreDetaljer", salgsOrdreDetaljerRoute);
+app.use("/salgs-billeder", salgsBillederRoute);
+app.use("/salgs-film", salgsFilmRoute);
+app.use("/salgs-film-genre", salgsFilmGenreRoute);
+app.use("/salgs-film-instruktoer", salgsFilmInstruktoerRoute);
+app.use("/salgs-kurv", salgsKurvRoute);
+app.use("/salgs-ordre-detaljer", salgsOrdreDetaljerRoute);
 app.use("/status", statusRoute);
 
 app.use((req, res, next) => {

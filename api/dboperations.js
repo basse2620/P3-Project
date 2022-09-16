@@ -590,7 +590,6 @@ async function updateLaaneFilmRabatA(laaneFilm) {
   try {
     let pool = await sql.connect(config);
     let updateFilm = await pool.request()
-      .input('filmId', sql.Int, laaneFilm.filmId)
       .input('rabat', sql.Decimal, laaneFilm.rabat)
       .query("Update LaaneFilm Set rabat = @rabat");
     return updateFilm.recordsets;
@@ -651,7 +650,7 @@ async function updateLaaneFilmForventet(laaneFilm) {
     let pool = await sql.connect(config);
     let updateFilm = await pool.request()
       .input('filmId', sql.Int, laaneFilm.filmId)
-      .input('rabat', sql.Date, laaneFilm.rabat)
+      .input('forventet', sql.Date, laaneFilm.rabat)
       .query("Update LaaneFilm Set udlaant = @udlaant Where PK_filmId = @filmId");
     return updateFilm.recordsets;
   }
@@ -764,6 +763,7 @@ async function deleteLaaneKurv(laaneKurv) {
     let pool = await sql.connect(config);
     let deleteLaaneKurv = await pool.request()
       .input('kurvId', sql.Int, laaneKurv.kurvId)
+      .input('filmId', sql.Int, laaneKurv.filmId)
       .query("Delete From LaaneKurv where FK_kurvId = @kurvId");
     return deleteLaaneKurv.recordsets;
   }
@@ -793,7 +793,7 @@ async function addLaaneOrdreDetaljer(laaneOrdreDetaljer) {
   try {
     let pool = await sql.connect(config);
     let insertLaaneOrdre = await pool.request()
-      .input('ordreId', sql.Int, laaneOrdreDetaljer.kurvId)
+      .input('ordreId', sql.Int, laaneOrdreDetaljer.ordreId)
       .input('filmId', sql.Int, laaneOrdreDetaljer.filmId)
       .input('pris', sql.Decimal, laaneOrdreDetaljer.pris)
       .input('rabat', sql.Decimal, laaneOrdreDetaljer.rabat)
@@ -891,7 +891,7 @@ async function updateOrdre(ordre) {
     let updateOrdre = await pool.request()
       .input('datoSendt', sql.DateTime, ordre.datoSendt)
       .input('statusId', sql.Int, ordre.statusId)
-      .input('ordreId', sql.NVarChar, ordre.ordreId)
+      .input('ordreId', sql.Int, ordre.ordreId)
       .query("Update Ordre Set datoSendt = @datoSendt, FK_statusId = @statusId Where PK_ordreId = @ordreId");
     return updateOrdre.recordsets;
   }
@@ -905,10 +905,24 @@ async function updateOrdreStatus(ordre) {
   try {
     let pool = await sql.connect(config);
     let updateOrdre = await pool.request()
-      .input('datoSendt', sql.DateTime, ordre.datoSendt)
       .input('statusId', sql.Int, ordre.statusId)
-      .input('ordreId', sql.NVarChar, ordre.ordreId)
+      .input('ordreId', sql.Int, ordre.ordreId)
       .query("Update Ordre Set FK_statusId = @statusId Where PK_ordreId = @ordreId");
+    return updateOrdre.recordsets;
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+// Updatere en ordres total pris
+async function updateOrdre(ordre) {
+  try {
+    let pool = await sql.connect(config);
+    let updateOrdre = await pool.request()
+      .input('totalPris', sql.Decimal, ordre.totalPris)
+      .input('ordreId', sql.Int, ordre.ordreId)
+      .query("Update Ordre Set totalPris = @totalPris Where PK_ordreId = @ordreId");
     return updateOrdre.recordsets;
   }
   catch (err) {
@@ -1166,7 +1180,7 @@ async function addSalgsKurv(salgsKurv) {
       .input('filmId', sql.Int, salgsKurv.filmId)
       .input('pris', sql.Int, salgsKurv.pris)
       .input('rabat', sql.Int, salgsKurv.rabat)
-      .input('meande', sql.Int, salgsKurv.meangde)
+      .input('maengde', sql.Int, salgsKurv.meangde)
       .query("Insert Into SalgsFilmInstruktoer (FK_kurvId, FK_filmId, pris, rabat, meangde) \
       Values (@kurvId, @filmId, @pris, @rabat, @meangde)");
     return insertKurv.recordsets;
@@ -1184,7 +1198,8 @@ async function updateSalgsKurv(saglsKurv) {
       .input('filmId', sql.Int, saglsKurv.filmId)
       .input('pris', sql.Decimal, saglsKurv.pris)
       .input('rabat', sql.Decimal, saglsKurv.rabat)
-      .query("Update SaglsKurv Set pris = @pris, rabat = @rabat Where FK_kurvId = @kurvId");
+      .input('meangde', sql.Int, saglsKurv.meangde)
+      .query("Update SaglsKurv Set pris = @pris, rabat = @rabat, meangde = @meangde Where FK_kurvId = @kurvId");
     return updateKurv.recordsets;
   }
   catch (err) {

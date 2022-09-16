@@ -13,8 +13,8 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', [
-    check('link').notEmpty().withMessage('Link maa ikke være tom'),
-    check('beskrivelse').notEmpty().withMessage('beskrivelse maa ikke for tom'),
+    check('link').notEmpty().withMessage('Link maa ikke vaere tom'),
+    check('beskrivelse').notEmpty().withMessage('beskrivelse maa ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);

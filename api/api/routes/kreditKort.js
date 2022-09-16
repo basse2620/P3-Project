@@ -13,9 +13,9 @@ router.get('/:kortnr/:cvc', (req, res) => {
 })
 
 router.post('/', [
-    check('kortnr').notEmpty().withMessage('Fornavn maa ikke være tom').isLength({ min: 16, max: 16 }),
-    check('cvc').notEmpty().withMessage('Efternavn maa ikke for tom').isLength({ min: 3, max: 3}),
-    check('kortholder').notEmpty().withMessage('Kortholder må ikke være tom'),
+    check('kortnr').notEmpty().withMessage('Fornavn maa ikke vaere tom').isLength({ min: 16, max: 16 }),
+    check('cvc').notEmpty().withMessage('Efternavn maa ikke vaere tom').isLength({ min: 3, max: 3}),
+    check('kortholder').notEmpty().withMessage('Kortholder må ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -30,9 +30,9 @@ router.post('/', [
 })
 
 router.patch('/', [
-    check('kortnr').notEmpty().withMessage('Fornavn maa ikke være tom').isLength({ min: 16, max: 16 }),
-    check('cvc').notEmpty().withMessage('Efternavn maa ikke for tom').isLength({ min: 3, max: 3}),
-    check('saldo').notEmpty().withMessage('Saldoen må ikke være tom'),
+    check('kortnr').notEmpty().withMessage('Fornavn maa ikke vaere tom').isLength({ min: 16, max: 16 }),
+    check('cvc').notEmpty().withMessage('Efternavn maa ikke vaere tom').isLength({ min: 3, max: 3}),
+    check('saldo').notEmpty().withMessage('Saldoen må ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -47,9 +47,9 @@ router.patch('/', [
 })
 
 router.delete('/', [
-    check('kortnr').notEmpty().withMessage('Fornavn maa ikke være tom').isLength({ min: 16, max: 16 }),
-    check('cvc').notEmpty().withMessage('Efternavn maa ikke for tom').isLength({ min: 3, max: 3}),
-    check('kortholder').notEmpty().withMessage('Kortholder må ikke være tom'),
+    check('kortnr').notEmpty().withMessage('Fornavn maa ikke vaere tom').isLength({ min: 16, max: 16 }),
+    check('cvc').notEmpty().withMessage('Efternavn maa ikke vaere tom').isLength({ min: 3, max: 3}),
+    check('kortholder').notEmpty().withMessage('Kortholder må ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);

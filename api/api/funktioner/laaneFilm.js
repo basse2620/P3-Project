@@ -74,12 +74,12 @@ async function addLaaneFilm(laaneFilm) {
             .input('filmNavn', sql.NVarChar, laaneFilm.filmNavn)
             .input('pris', sql.Decimal, laaneFilm.pris)
             .input('rabat', sql.Decimal, laaneFilm.rabat)
-            .input('meangde', sql.Int, laaneFilm.meangde)
+            .input('maengde', sql.Int, laaneFilm.maengde)
             .input('udlaant', sql.Int, laaneFilm.udlaant)
             .input('resevert', sql.Int, laaneFilm.resevert)
             .input('forventetDato', sql.Date, laaneFilm.forventetDato)
-            .query("Insert Into LaaneFilm (filmNavn, pris, rabat, meangde, udlaant, resevert, forventetDato) \
-        Values (@filmNavn, @pris, @rabat, @meangde, @udlaant, @resevert, @forventetDato)");
+            .query("Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) \
+        Values (@filmNavn, @pris, @rabat, @maengde, @udlaant, @resevert, @forventetDato)");
         return insertFilm.recordsets;
     }
     catch (err) {
@@ -132,14 +132,14 @@ async function updateLaaneFilmRabatA(laaneFilm) {
     }
 }
 
-// Updatere meangden af laane film
-async function updateLaaneFilmMeangde(laaneFilm) {
+// Updatere maengden af laane film
+async function updateLaaneFilmMaengde(laaneFilm) {
     try {
         let pool = await sql.connect(config);
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, laaneFilm.filmId)
-            .input('meangde', sql.Int, laaneFilm.meangde)
-            .query("Update LaaneFilm Set meangde = @meangde Where PK_filmId = @filmId");
+            .input('maengde', sql.Int, laaneFilm.maengde)
+            .query("Update LaaneFilm Set maengde = @maengde Where PK_filmId = @filmId");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -183,8 +183,8 @@ async function updateLaaneFilmForventet(laaneFilm) {
         let pool = await sql.connect(config);
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, laaneFilm.filmId)
-            .input('rabat', sql.Date, laaneFilm.rabat)
-            .query("Update LaaneFilm Set udlaant = @udlaant Where PK_filmId = @filmId");
+            .input('forventet', sql.Date, laaneFilm.forventet)
+            .query("Update LaaneFilm Set forventetDato = @forventet Where PK_filmId = @filmId");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -214,7 +214,7 @@ module.exports = {
     updateLaaneFilmPris: updateLaaneFilmPris,
     updateLaaneFilmRabat: updateLaaneFilmRabat,
     updateLaaneFilmRabatA: updateLaaneFilmRabatA,
-    updateLaaneFilmMeangde: updateLaaneFilmMeangde,
+    updateLaaneFilmMaengde: updateLaaneFilmMaengde,
     updateLaaneFilmUdlaant: updateLaaneFilmUdlaant,
     updateLaaneFilmResevert: updateLaaneFilmResevert,
     updateLaaneFilmForventet: updateLaaneFilmForventet,

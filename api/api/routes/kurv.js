@@ -13,8 +13,8 @@ router.get('/:brugernavn', (req, res) => {
 })
 
 router.post('/', [
-    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke være tom'),
-    check('totalPris').notEmpty().withMessage('totalPris maa ikke for tom'),
+    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke vaere tom'),
+    check('totalPris').notEmpty().withMessage('totalPris maa ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -29,8 +29,8 @@ router.post('/', [
 })
 
 router.patch('/', [
-    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke være tom'),
-    check('totalPris').notEmpty().withMessage('totalPris maa ikke for tom'),
+    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke vaere tom'),
+    check('totalPris').notEmpty().withMessage('totalPris maa ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);

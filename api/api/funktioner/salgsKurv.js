@@ -25,9 +25,9 @@ async function addSalgsKurv(salgsKurv) {
             .input('filmId', sql.Int, salgsKurv.filmId)
             .input('pris', sql.Int, salgsKurv.pris)
             .input('rabat', sql.Int, salgsKurv.rabat)
-            .input('meande', sql.Int, salgsKurv.meangde)
-            .query("Insert Into SalgsFilmInstruktoer (FK_kurvId, FK_filmId, pris, rabat, meangde) \
-        Values (@kurvId, @filmId, @pris, @rabat, @meangde)");
+            .input('maengde', sql.Int, salgsKurv.maengde)
+            .query("Insert Into SalgsFilmInstruktoer (FK_kurvId, FK_filmId, pris, rabat, maengde) \
+        Values (@kurvId, @filmId, @pris, @rabat, @maengde)");
         return insertKurv.recordsets;
     }
     catch (err) {
@@ -43,7 +43,8 @@ async function updateSalgsKurv(saglsKurv) {
             .input('filmId', sql.Int, saglsKurv.filmId)
             .input('pris', sql.Decimal, saglsKurv.pris)
             .input('rabat', sql.Decimal, saglsKurv.rabat)
-            .query("Update SaglsKurv Set pris = @pris, rabat = @rabat Where FK_kurvId = @kurvId");
+            .input('maengde', sql.Int, saglsKurv.maengde)
+            .query("Update SaglsKurv Set pris = @pris, rabat = @rabat, maengde = @maengde Where FK_kurvId = @kurvId");
         return updateKurv.recordsets;
     }
     catch (err) {

@@ -26,8 +26,8 @@ router.get('/film/:id', (req, res) => {
 })
 
 router.post('/', [
-    check('fornavn').notEmpty().withMessage('Fornavn maa ikke være tom'),
-    check('Efternavn').notEmpty().withMessage('Efternavn maa ikke for tom')
+    check('fornavn').notEmpty().withMessage('Fornavn maa ikke vaere tom'),
+    check('Efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom')
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -42,9 +42,9 @@ router.post('/', [
 })
 
 router.patch('/', [
-    check('instruktoerId').notEmpty().withMessage("Instruktoer Id'et må ikke være tomt"),
-    check('fornavn').notEmpty().withMessage('Fornavn maa ikke være tom'),
-    check('Efternavn').notEmpty().withMessage('Efternavn maa ikke for tom')
+    check('instruktoerId').notEmpty().withMessage("Instruktoer Id'et må ikke vaere tomt"),
+    check('fornavn').notEmpty().withMessage('Fornavn maa ikke vaere tom'),
+    check('Efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom')
 ], (req, res) => {
 
     const errors = validationResult(req);

@@ -25,9 +25,9 @@ async function addSalgsOrdreDetaljer(salgsOrdreDetaljer) {
             .input('filmId', sql.Int, salgsOrdreDetaljer.filmId)
             .input('pris', sql.Decimal, salgsOrdreDetaljer.pris)
             .input('rabat', sql.Decimal, salgsOrdreDetaljer.rabat)
-            .input('meangde', sql.Int, salgsOrdreDetaljer.meangde)
-            .query("Insert Into SalgsOrdreDetaljer  (FK_ordreId, FK_filmId, pris, rabat, meangde) \
-        Values (@ordreId, @filmId, @pris, @rabat, @meangde)");
+            .input('maengde', sql.Int, salgsOrdreDetaljer.maengde)
+            .query("Insert Into SalgsOrdreDetaljer  (FK_ordreId, FK_filmId, pris, rabat, maengde) \
+        Values (@ordreId, @filmId, @pris, @rabat, @maengde)");
         return insertSaglsOrdre.recordsets;
     }
     catch (err) {
@@ -36,13 +36,13 @@ async function addSalgsOrdreDetaljer(salgsOrdreDetaljer) {
 }
 
 // Updatere laane ordre detaljer
-async function updateSalgsOrdreDetaljer(laaneOrdreDetaljer) {
+async function updateSalgsOrdreDetaljer(salgsOrdreDetaljer) {
     try {
         let pool = await sql.connect(config);
         let updateSaglsOrdre = await pool.request()
-            .input('ordreId', sql.Int, laaneOrdreDetaljer.ordreId)
-            .input('statusId', sql.Int, laaneOrdreDetaljer.statusId)
-            .query("Update LaaneOrdreDetaljer Set FK_statusId = @statusId Where FK_ordreId = @ordreId");
+            .input('ordreId', sql.Int, salgsOrdreDetaljer.ordreId)
+            .input('statusId', sql.Int, salgsOrdreDetaljer.statusId)
+            .query("Update salgsOrdreDetaljer Set FK_statusId = @statusId Where FK_ordreId = @ordreId");
         return updateSaglsOrdre.recordsets;
     }
     catch (err) {

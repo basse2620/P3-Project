@@ -19,10 +19,10 @@ router.get('/:brugernavn/:password', (req, res) => {
 })
 
 router.post('/', [
-    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke være tom'),
-    check('password').notEmpty().withMessage('Password Nr maa ikke for tom').isStrongPassword().withMessage('Passworded er ikke stærkt nok'),
-    check('fornavn').notEmpty().withMessage('Fornavn maa ikke være tom'),
-    check('efternavn').notEmpty().withMessage('Efternavn maa ikke være tom'),
+    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke vaere tom'),
+    check('password').notEmpty().withMessage('Password Nr maa ikke vaere tom').isStrongPassword().withMessage('Passworded er ikke stærkt nok'),
+    check('fornavn').notEmpty().withMessage('Fornavn maa ikke vaere tom'),
+    check('efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom'),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -37,9 +37,9 @@ router.post('/', [
 })
 
 router.patch('/', [
-    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke være tom'),
-    check('password').notEmpty().withMessage('Brugernavn maa ikke være tom'),
-    check('newPassword').notEmpty().withMessage('Nyt password maa ikke for tom').isStrongPassword().withMessage('Passworded er ikke stærkt nok'),
+    check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke vaere tom'),
+    check('password').notEmpty().withMessage('Brugernavn maa ikke vaere tom'),
+    check('newPassword').notEmpty().withMessage('Nyt password maa ikke vaere tom').isStrongPassword().withMessage('Passworded er ikke stærkt nok'),
 ], (req, res) => {
 
     const errors = validationResult(req);
