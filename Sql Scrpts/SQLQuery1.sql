@@ -30,7 +30,7 @@ PK_filmId int Identity Primary Key,
 filmNavn nvarchar(255) not null,
 pris decimal not null,
 rabat decimal default 0 not null,
-meangde int not null,
+maengde int not null,
 udlaant int default 0 not null,
 resevert int default 0 not null,
 forventetDato date 
@@ -141,8 +141,8 @@ FK_kurvId int Foreign Key References Kurv(PK_kurvId),
 FK_filmId int Foreign Key References SalgsFilm(PK_filmId),
 pris decimal not null,
 rabat decimal default 0 not null,
-meangde int not null,
-totalPris as ((pris - rabat) * meangde),
+maengde int not null,
+totalPris as ((pris - rabat) * maengde),
 Primary Key (FK_kurvId, FK_filmId)
 )
 
@@ -178,8 +178,8 @@ FK_ordreId int Foreign Key References [Ordre](PK_ordreId),
 FK_filmId int Foreign Key References SalgsFilm(PK_filmId),
 pris decimal not null,
 rabat decimal default 0 not null,
-meangde int not null,
-totalPris as ((pris - rabat) * meangde),
+maengde int not null,
+totalPris as ((pris - rabat) * maengde),
 Primary Key (FK_ordreId, FK_filmId)
 )
 
@@ -196,11 +196,11 @@ Insert Into Bruger (PK_brugernavn, [password], fornavn, efternavn, salgsScore, e
 Insert Into Bruger (PK_brugernavn, [password], fornavn, efternavn, salgsScore, email, FK_addresseId, FK_kortNr, FK_typeId) Values ('Test2', 'test', 'admin', 'test', 5, 'kage@gmail.com', 1, 1234567812345678, 1)
 Insert Into Genre (genre) Values ('Gyser')
 Insert Into Genre (genre) Values ('Romantisk')
---Insert Into Ordre (totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values (3000, 1, 1, 'Test1')
+Insert Into Ordre (totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values (3000, 1, 1, 'Test1')
 Insert Into Kurv (FK_brugernavn, totalPris) Values ('Test1', 200)
-Insert Into LaaneFilm (filmNavn, pris, rabat, meangde, udlaant, resevert, forventetDato) Values ('Test1', 120, 20, 8, 8, 2, '12-12-2022')
-Insert Into LaaneFilm (filmNavn, pris, rabat, meangde, udlaant, resevert, forventetDato) Values ('Test2', 100, 0, 6, 3, 0, '10-10-2022')
-Insert Into LaaneFilm (filmNavn, pris, rabat, meangde, udlaant, resevert, forventetDato) Values ('Test3', 100, 0, 6, 3, 0, '10-10-2022')
+Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) Values ('Test1', 120, 20, 8, 8, 2, '12-12-2022')
+Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) Values ('Test2', 100, 0, 6, 3, 0, '10-10-2022')
+Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) Values ('Test3', 100, 0, 6, 3, 0, '10-10-2022')
 Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) Values (1,1)
 Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) Values (1,2)
 Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) Values (2,2)
@@ -212,7 +212,7 @@ Insert Into SalgsFilm (filmNavn, pris, rabat, stand) Values ('Test4', 80, 0, 2)
 Insert Into SalgsFilmGenre (FK_filmId, FK_genreId) Values (1, 1)
 Insert Into SalgsFilmGenre (FK_filmId, FK_genreId) Values (2, 1)
 Insert Into SalgsFilmGenre (FK_filmId, FK_genreId) Values (2, 2)
-Insert Into SalgsKurv (FK_kurvId, FK_filmId, pris, rabat, meangde) Values (1, 1, 120, 20, 1)
+Insert Into SalgsKurv (FK_kurvId, FK_filmId, pris, rabat, maengde) Values (1, 1, 120, 20, 1)
 Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (1, 'Test3.dk', 'Test3')
 Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (2, 'Test4.dk', 'Test4')
 Insert Into Ordre (datoSendt, totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values ('2022-08-23 11:11:11', 200, 1, 1, 'Test1')
@@ -220,9 +220,9 @@ Insert Into Ordre (datoSendt, totalPris, FK_statusId, FK_addresseId, FK_brugerna
 Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId) Values (1, 1, 70, 20, 1)
 Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId) Values (2, 1, 70, 20, 1)
 Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId) Values (2, 2, 90, 40, 1)
-Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, meangde) Values (1, 1, 70, 20, 4)
-Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, meangde) Values (2, 1, 70, 20, 2)
-Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, meangde) Values (2, 2, 170, 70, 3)
+Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, maengde) Values (1, 1, 70, 20, 4)
+Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, maengde) Values (2, 1, 70, 20, 2)
+Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, maengde) Values (2, 2, 170, 70, 3)
 Insert Into Instruktoer (fornavn, efternavn) Values ('Jan1', 'Larsen1')
 Insert Into Instruktoer (fornavn, efternavn) Values ('Jan2', 'Larsen2')
 Insert Into Instruktoer (fornavn, efternavn) Values ('Jan3', 'Larsen3')
@@ -231,97 +231,3 @@ Insert Into LaaneFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (1, 1)
 Insert Into LaaneFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (1, 2)
 Insert Into LaaneFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (2, 1)
 Insert Into LaaneFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (3, 3)
-
-
---Select k.totalPris, lf.filmNavn As LaaneFilm, lf.pris, lf.rabat, lb.link, lb.beskrivelse, sf.filmnavn As SalgsFilm, sk.meangde, sk.pris, sk.rabat, sk.totalPris, sb.link, sb.beskrivelse
---From Kurv As k
---Inner Join LaaneKurv As lk
---on k.PK_kurvId = lk.FK_kurvId
---Inner Join LaaneFilm As lf
---on lk.FK_filmId = lf.PK_filmId
---Inner Join LaaneBilledere As lb
---on lf.PK_filmId = lb.FK_filmId
---Inner Join SalgsKurv As sk
---on k.PK_kurvId = sk.FK_kurvId
---Inner Join SalgsFilm As sf
---on sk.FK_filmId = sf.PK_filmId
---Inner Join SalgsBilledere As sb
---on sf.PK_filmId = sb.FK_filmId
---where k.FK_brugernavn = 'Test1'
-
-
-Insert Into Bruger (PK_brugernavn, [password], fornavn, efternavn, salgsScore, email, FK_addresseId, FK_kortNr, FK_typeId) Values ('txtSQL = Drop Database api_db', 'test', 'admin', 'test', 5, 'kage1@gmail.com', 1, 1234567812345678, 1)
-
---Select o.datoOprettet, o.totalPris, lf.filmNavn As lfFilmNavn, lf.pris As lfPris, lf.rabat As lfRabat, lo.udlaansDato, lo.returDato, 
---lb.link As lbLink, lb.beskrivelse As lbBeskrivelse, sf.filmNavn As sfFilmNavn, sf.pris As sfPris, sf.rabat, sf.stand, so.meangde, so.totalPris As sfTotalPris, sb.link As sb, sb.beskrivelse
---From Ordre As o
---Inner Join LaaneOrdreDetaljer As lo
---on o.PK_ordreId = lo.FK_ordreId
---Inner Join LaaneFilm As lf
---on lo.FK_filmId = lf.PK_filmId
---Inner Join LaaneBilledere As lb
---on lf.PK_filmId = lb.FK_filmId
---Inner Join SalgsOrdreDetaljer As so
---on o.PK_ordreId = so.FK_ordreId
---Inner Join SalgsFilm As sf
---on so.FK_filmId = sf.PK_filmId
---Inner Join SalgsBilledere As sb
---on sf.PK_filmId = sb.FK_filmId
---where FK_brugernavn = 'Test1'
-
-
---SELECT FK_brugernavn, PK_ordreId, datoOprettet, totalPris from Ordre where FK_brugernavn = 'Test1'
-
-
-
---Select o.PK_ordreId, o.datoOprettet, o.totalPris, lf.filmNavn As lfFilmNavn, lf.pris As lfPris, lf.rabat As lfRabat, lo.udlaansDato,
---      lo.returDato, lb.link As lbLink, lb.beskrivelse As lbBeskrivelse, sf.filmNavn As sfFilmNavn, sf.pris As sfPris, sf.rabat, sf.stand, 
---      so.meangde, so.totalPris As sfTotalPris, sb.link As sbLink, sb.beskrivelse As sbBeskrivlse 
---      From Ordre As o 
---      Inner Join LaaneOrdreDetaljer As lo 
---      on o.PK_ordreId = lo.FK_ordreId 
---      Inner Join LaaneFilm As lf 
---      on lo.FK_filmId = lf.PK_filmId 
---      Inner Join LaaneBilledere As lb 
---      on lf.PK_filmId = lb.FK_filmId 
---      Inner Join SalgsOrdreDetaljer As so 
---      on o.PK_ordreId = so.FK_ordreId 
---      Inner Join SalgsFilm As sf 
---      on so.FK_filmId = sf.PK_filmId 
---      Inner Join SalgsBilledere As sb 
---      on sf.PK_filmId = sb.FK_filmId 
---      where PK_ordreId = 2;
-
---Select * From SalgsFilm
-
---Select * From KreditKort
-
---Update KreditKort Set saldo = 300
-
---Select * From Instruktoer
-
---SELECT * 
---    from LaaneFilm as lf 
---    Inner Join LaaneFilmInstruktoer as lfi 
---    on lf.PK_filmId = lfi.FK_filmId 
---    Inner Join Instruktoer as i 
---    on lfi.FK_InstruktoerId = i.PK_InstruktoerId 
---    where i.PK_InstruktoerId = 1
-
---	SELECT * from Bruger where PK_brugernavn = 'Test1' and [password] = 'Test1'
-
---Update Bruger Set [password] = 'Test1' Where PK_brugernavn = 'Test1' and [password] = 'Test'
-
---Update LaaneFilm Set meangde = 5 Where PK_filmId = 3
-
---Update Ordre Set datoSendt = '2022-08-24', FK_statusId = 1 Where PK_ordreId = 1
-
---SELECT * from LaaneFilm
-
---Select * from Status
-
---Insert Into [Status] ([status]) Values ('Modtaget')
-
---Delete From [Status] where PK_statusId = 3
-
-select * from Addresse
