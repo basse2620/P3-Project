@@ -43,6 +43,7 @@ router.post('/', [
 })
 
 router.patch('/', [
+    check('addresseId').notEmpty().withMessage('Addressens id maa ikke vaere tom'),
     check('addresse').notEmpty().withMessage('Addressen maa ikke vaere tom'),
     check('postNr').notEmpty().withMessage('Post Nr maa ikke vaere tom')
 ], (req, res) => {
