@@ -15,19 +15,25 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     Db.getInstruktoerId(req.params.id).then((data) => {
-        response.json(data[0]);
+        res.json(data[0]);
     })
 })
 
-router.get('/film/:id', (req, res) => {
-    Db.getInstruktoerFilm(req.params.id).then((data) => {
-        response.json(data[0]);
+router.get('/laane-film/:id', (req, res) => {
+    Db.getInstruktoerLaaneFilm(req.params.id).then((data) => {
+        res.json(data[0]);
+    })
+})
+
+router.get('/salgs-film/:id', (req, res) => {
+    Db.getInstruktoerSalgsFilm(req.params.id).then((data) => {
+        res.json(data[0]);
     })
 })
 
 router.post('/', [
     check('fornavn').notEmpty().withMessage('Fornavn maa ikke vaere tom'),
-    check('Efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom')
+    check('efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom')
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -44,7 +50,7 @@ router.post('/', [
 router.patch('/', [
     check('instruktoerId').notEmpty().withMessage("Instruktoer Id'et må ikke vaere tomt"),
     check('fornavn').notEmpty().withMessage('Fornavn maa ikke vaere tom'),
-    check('Efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom')
+    check('efternavn').notEmpty().withMessage('Efternavn maa ikke vaere tom')
 ], (req, res) => {
 
     const errors = validationResult(req);

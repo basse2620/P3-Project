@@ -19,8 +19,14 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.get('/film/:id', (req, res) => {
-    Db.getGenreFilm(req.params.id).then((data) => {
+router.get('/laane-film/:id', (req, res) => {
+    Db.getGenreLaaneFilm(req.params.id).then((data) => {
+        res.json(data[0]);
+    })
+})
+
+router.get('/salgs-film/:id', (req, res) => {
+    Db.getGenreSalgsFilm(req.params.id).then((data) => {
         res.json(data[0]);
     })
 })

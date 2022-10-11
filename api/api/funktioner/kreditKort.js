@@ -9,8 +9,8 @@ async function getKreditKort(kortNr, cvc) {
         let kort = await pool.request()
             .input('kortNr', sql.BigInt, kortNr)
             .input('cvc', sql.Int, cvc)
-            .query("Select saldo From KreditKort where PK_kortNr = @kortNr and cvc = @cvc");
-        return product.recordsets;
+            .query("Select PK_kortNr As kortNr, saldo From KreditKort where PK_kortNr = @kortNr and cvc = @cvc");
+        return kort.recordsets;
     }
     catch (error) {
         console.log(error);

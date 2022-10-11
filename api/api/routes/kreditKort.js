@@ -13,8 +13,10 @@ router.get('/:kortnr/:cvc', (req, res) => {
 })
 
 router.post('/', [
-    check('kortnr').notEmpty().withMessage('Fornavn maa ikke vaere tom').isLength({ min: 16, max: 16 }),
-    check('cvc').notEmpty().withMessage('Efternavn maa ikke vaere tom').isLength({ min: 3, max: 3}),
+    check('kortNr').notEmpty().withMessage('Kort Nr maa ikke vaere tom').isLength({ min: 16, max: 16 })
+    .withMessage("Kort Nr laengden er ikke korekt").isNumeric().withMessage("Kort Nr skal være tal"),
+    check('cvc').notEmpty().withMessage('CVC maa ikke vaere tom').isLength({ min: 3, max: 3})
+    .withMessage("CVC laengden er ikke korekt").isNumeric().withMessage("CVC skal være tal"),
     check('kortholder').notEmpty().withMessage('Kortholder må ikke vaere tom'),
 ], (req, res) => {
 
@@ -30,8 +32,10 @@ router.post('/', [
 })
 
 router.patch('/', [
-    check('kortnr').notEmpty().withMessage('Fornavn maa ikke vaere tom').isLength({ min: 16, max: 16 }),
-    check('cvc').notEmpty().withMessage('Efternavn maa ikke vaere tom').isLength({ min: 3, max: 3}),
+    check('kortNr').notEmpty().withMessage('Kort Nr maa ikke vaere tom').isLength({ min: 16, max: 16 })
+    .withMessage("Kort Nr laengden er ikke korekt").isNumeric().withMessage("Kort Nr skal være tal"),
+    check('cvc').notEmpty().withMessage('CVC maa ikke vaere tom').isLength({ min: 3, max: 3})
+    .withMessage("CVC laengden er ikke korekt").isNumeric().withMessage("CVC skal være tal"),
     check('saldo').notEmpty().withMessage('Saldoen må ikke vaere tom'),
 ], (req, res) => {
 
@@ -47,8 +51,10 @@ router.patch('/', [
 })
 
 router.delete('/', [
-    check('kortnr').notEmpty().withMessage('Fornavn maa ikke vaere tom').isLength({ min: 16, max: 16 }),
-    check('cvc').notEmpty().withMessage('Efternavn maa ikke vaere tom').isLength({ min: 3, max: 3}),
+    check('kortNr').notEmpty().withMessage('Kort Nr maa ikke vaere tom').isLength({ min: 16, max: 16 })
+    .withMessage("Kort Nr laengden er ikke korekt").isNumeric().withMessage("Kort Nr skal være tal"),
+    check('cvc').notEmpty().withMessage('CVC maa ikke vaere tom').isLength({ min: 3, max: 3})
+    .withMessage("CVC laengden er ikke korekt").isNumeric().withMessage("CVC skal være tal"),
     check('kortholder').notEmpty().withMessage('Kortholder må ikke vaere tom'),
 ], (req, res) => {
 

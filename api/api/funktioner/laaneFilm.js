@@ -35,11 +35,11 @@ async function getLaaneFilmG(genreId) {
         let film = await pool.request()
             .input('genreId', sql.Int, genreId)
             .query("SELECT * from LaaneFilm as lf \
-        Inner Join LaaneFilmGenre as lfg \
-        on lf.PK_filmId = lfg.FK_filmId \
-        Inner Join Genre as g \
-        on lfg.FK_genreId = g.PK_genreId \
-        where g.PK_genreId = @genreId");
+                Inner Join LaaneFilmGenre as lfg \
+                on lf.PK_filmId = lfg.FK_filmId \
+                Inner Join Genre as g \
+                on lfg.FK_genreId = g.PK_genreId \
+                where g.PK_genreId = @genreId");
         return film.recordsets;
     }
     catch (error) {

@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/:post-nr', (req, res) => {
-    Db.getBy(req.params.postNr).then((data) => {
+router.get('/:postnr', (req, res) => {
+    Db.getBy(req.params.postnr).then((data) => {
         res.json(data[0]);
     })
 })
