@@ -12,6 +12,18 @@ router.get('/:brugernavn', (req, res) => {
     })
 })
 
+router.get('/laane/:brugernavn', (req, res) => {
+    Db.getKurvLaane(req.params.brugernavn).then((data) => {
+        res.json(data[0]);
+    })
+})
+
+router.get('/salgs/:brugernavn', (req, res) => {
+    Db.getKurvSalgs(req.params.brugernavn).then((data) => {
+        res.json(data[0]);
+    })
+})
+
 router.post('/', [
     check('brugernavn').notEmpty().withMessage('Brugernavn maa ikke vaere tom'),
     check('totalPris').notEmpty().withMessage('totalPris maa ikke vaere tom'),

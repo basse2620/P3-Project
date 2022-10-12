@@ -1,7 +1,7 @@
 const config = {
     user: 'sa',
     password: 'Passw0rd',
-    server: '172.18.242.45',
+    server: '172.24.244.198',
     database: 'BlockFlix',
     options: {
         encrypt: false,

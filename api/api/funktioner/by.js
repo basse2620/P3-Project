@@ -20,7 +20,7 @@ async function getBy(postNr) {
     let pool = await sql.connect(config);
     let by = await pool.request()
       .input('postNr', sql.Int, postNr)
-      .query("SELECT * from [By] where PK_postNr = @posrNr");
+      .query("Select * from [By] where PK_postNr = @postNr");
     return by.recordsets;
   }
   catch (error) {

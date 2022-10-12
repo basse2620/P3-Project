@@ -35,11 +35,11 @@ async function getLaaneFilmG(genreId) {
         let film = await pool.request()
             .input('genreId', sql.Int, genreId)
             .query("SELECT * from LaaneFilm as lf \
-        Inner Join LaaneFilmGenre as lfg \
-        on lf.PK_filmId = lfg.FK_filmId \
-        Inner Join Genre as g \
-        on lfg.FK_genreId = g.PK_genreId \
-        where g.PK_genreId = @genreId");
+                Inner Join LaaneFilmGenre as lfg \
+                on lf.PK_filmId = lfg.FK_filmId \
+                Inner Join Genre as g \
+                on lfg.FK_genreId = g.PK_genreId \
+                where g.PK_genreId = @genreId");
         return film.recordsets;
     }
     catch (error) {
@@ -55,10 +55,10 @@ async function getLaaneFilmI(instruktoerId) {
             .input('instruktoerId', sql.Int, instruktoerId)
             .query("SELECT * from LaaneFilm as lf \
         Inner Join LaaneFilmInstruktoer as lfi \
-        on lf.PK_filmId = lfg.FK_filmId \
+        on lf.PK_filmId = lfi.FK_filmId \
         Inner Join Instruktoer as i \
         on lfi.FK_instruktoerId = i.PK_instruktoerId \
-        where g.PK_instruktoerId = @instruktoerId");
+        where i.PK_instruktoerId = @instruktoerId");
         return film.recordsets;
     }
     catch (error) {
@@ -77,9 +77,8 @@ async function addLaaneFilm(laaneFilm) {
             .input('maengde', sql.Int, laaneFilm.maengde)
             .input('udlaant', sql.Int, laaneFilm.udlaant)
             .input('resevert', sql.Int, laaneFilm.resevert)
-            .input('forventetDato', sql.Date, laaneFilm.forventetDato)
-            .query("Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) \
-        Values (@filmNavn, @pris, @rabat, @maengde, @udlaant, @resevert, @forventetDato)");
+            .query("Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert) \
+        Values (@filmNavn, @pris, @rabat, @maengde, @udlaant, @resevert)");
         return insertFilm.recordsets;
     }
     catch (err) {
@@ -215,8 +214,8 @@ module.exports = {
     updateLaaneFilmRabat: updateLaaneFilmRabat,
     updateLaaneFilmRabatA: updateLaaneFilmRabatA,
     updateLaaneFilmMaengde: updateLaaneFilmMaengde,
-    updateLaaneFilmUdlaant: updateLaaneFilmUdlaant,
     updateLaaneFilmResevert: updateLaaneFilmResevert,
+    updateLaaneFilmUdlaant: updateLaaneFilmUdlaant,
     updateLaaneFilmForventet: updateLaaneFilmForventet,
     deleteLaaneFilm: deleteLaaneFilm
 }
