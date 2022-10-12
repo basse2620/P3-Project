@@ -7,7 +7,7 @@ async function getLaaneBillede(filmId) {
     try {
         let pool = await sql.connect(config);
         let billede = await pool.request()
-            .input('filmId'.sql.Int, filmId)
+            .input('filmId', sql.Int, filmId)
             .query("Select * From LaaneBilledere where FK_filmId = @filmId");
         return billede.recordset;
     }
@@ -21,9 +21,9 @@ async function addLaaneBillede(laaneBillede) {
     try {
         let pool = await sql.connect(config);
         let insertBillede = await pool.request()
-            .input('filmId', sql.Int, laanebillede.filmId)
-            .input('link', sql.NVarChar, laanebillede.link)
-            .input('beskrivelse', sql.NVarChar, laanebillede.beskrivelse)
+            .input('filmId', sql.Int, laaneBillede.filmId)
+            .input('link', sql.NVarChar, laaneBillede.link)
+            .input('beskrivelse', sql.NVarChar, laaneBillede.beskrivelse)
             .query("Insert Into LaaneBilledere (FK_filmId, link, beskrivelse) Values (@filmId, @link, @beskrivelse)");
         return insertBillede.recordsets;
     }

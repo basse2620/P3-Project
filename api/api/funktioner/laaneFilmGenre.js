@@ -7,7 +7,7 @@ async function addLaaneFilmGenre(laaneFilmGenre) {
     try {
         let pool = await sql.connect(config);
         let insertFilmGenre = await pool.request()
-            .input('filmId', sql.Int, laaneKurv.filmId)
+            .input('filmId', sql.Int, laaneFilmGenre.filmId)
             .input('genreId', sql.Int, laaneFilmGenre.genreId)
             .query("Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) \
         Values (@filmId, @genreId)");

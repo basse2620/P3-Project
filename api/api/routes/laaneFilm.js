@@ -94,7 +94,7 @@ router.patch('/rabat-alle', [
     })
 })
 
-router.patch('/maangde', [
+router.patch('/maengde', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
     check('maengde').notEmpty().withMessage('Maengde maa ikke vaere tom'),
 ], (req, res) => {
@@ -142,9 +142,10 @@ router.patch('/resevert', [
     })
 })
 
-router.patch('/vaereventet', [
+router.patch('/forventet', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('vaereventet').notEmpty().withMessage('Forventet maa ikke vaere tom').isDate().withMessage("Forventet skal vaere en dato (YYYY-MM-DD)"),
+    check('forventet').notEmpty().withMessage('Forventet maa ikke vaere tom').isDate()
+    .withMessage("Forventet skal vaere en dato (YYYY-MM-DD)"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -158,7 +159,7 @@ router.patch('/vaereventet', [
     })
 })
 
-router.delete('/vaereventet', [
+router.delete('/', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
 ], (req, res) => {
 
