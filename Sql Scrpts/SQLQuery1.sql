@@ -117,13 +117,13 @@ salgsScore decimal,
 email nvarchar(255) not null,
 FK_addresseId int Foreign Key References Addresse(PK_addresseId),
 FK_kortNr bigint Foreign Key References KreditKort(PK_kortNr),
-FK_typeId int Foreign Key References BrugerType(PK_typeId) not null,
+FK_typeId int Foreign Key References BrugerType(PK_typeId) default 1 not null,
 Constraint skestenTal Check (FK_kortNr Between 1000000000000000 And 9999999999999999)
 )
 
 Create Table Kurv(
 PK_kurvId int Identity Primary Key,
-FK_brugernavn nvarchar(255) Foreign Key References Bruger(PK_brugernavn) not null,
+FK_brugernavn nvarchar(255) Foreign Key References Bruger(PK_brugernavn) Unique not null,
 totalPris decimal not null,
 )
 
@@ -198,6 +198,7 @@ Insert Into Genre (genre) Values ('Gyser')
 Insert Into Genre (genre) Values ('Romantisk')
 Insert Into Ordre (totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values (3000, 1, 1, 'Test1')
 Insert Into Kurv (FK_brugernavn, totalPris) Values ('Test1', 200)
+Insert Into Kurv (FK_brugernavn, totalPris) Values ('Test2', 500)
 Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) Values ('Test1', 120, 20, 8, 8, 2, '12-12-2022')
 Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) Values ('Test2', 100, 0, 6, 3, 0, '10-10-2022')
 Insert Into LaaneFilm (filmNavn, pris, rabat, maengde, udlaant, resevert, forventetDato) Values ('Test3', 100, 0, 6, 3, 0, '10-10-2022')
@@ -205,14 +206,19 @@ Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) Values (1,1)
 Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) Values (1,2)
 Insert Into LaaneFilmGenre (FK_filmId, FK_genreId) Values (2,2)
 Insert Into LaaneKurv (FK_kurvId, FK_filmId, pris, rabat) Values (1, 1, 120, 20)
+Insert Into LaaneKurv (FK_kurvId, FK_filmId, pris, rabat) Values (2, 1, 100, 0)
+Insert Into LaaneKurv (FK_kurvId, FK_filmId, pris, rabat) Values (2, 2, 100, 0)
 Insert Into LaaneBilledere (FK_filmId, link, beskrivelse) Values (1, 'Test.dk', 'Test')
+Insert Into LaaneBilledere (FK_filmId, link, beskrivelse) Values (1, 'Test2.dk', 'Test2')
 Insert Into LaaneBilledere (FK_filmId, link, beskrivelse) Values (2, 'Test2.dk', 'Test2')
 Insert Into SalgsFilm (filmNavn, pris, rabat, stand) Values ('Test3', 140, 20, 8)
-Insert Into SalgsFilm (filmNavn, pris, rabat, stand) Values ('Test4', 80, 0, 2)
+Insert Into SalgsFilm (filmNavn, pris, rabat, stand) Values ('Test4', 100, 0, 2)
 Insert Into SalgsFilmGenre (FK_filmId, FK_genreId) Values (1, 1)
 Insert Into SalgsFilmGenre (FK_filmId, FK_genreId) Values (2, 1)
 Insert Into SalgsFilmGenre (FK_filmId, FK_genreId) Values (2, 2)
 Insert Into SalgsKurv (FK_kurvId, FK_filmId, pris, rabat, maengde) Values (1, 1, 120, 20, 1)
+Insert Into SalgsKurv (FK_kurvId, FK_filmId, pris, rabat, maengde) Values (2, 1, 100, 0, 1)
+Insert Into SalgsKurv (FK_kurvId, FK_filmId, pris, rabat, maengde) Values (2, 2, 100, 0, 2)
 Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (1, 'Test3.dk', 'Test3')
 Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (2, 'Test4.dk', 'Test4')
 Insert Into Ordre (datoSendt, totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values ('2022-08-23 11:11:11', 200, 1, 1, 'Test1')
