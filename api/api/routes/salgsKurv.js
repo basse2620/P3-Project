@@ -26,7 +26,7 @@ router.post('/', [
 
     let salgsKurv = { ...req.body }
     Db.addSalgsKurv(salgsKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsKurv);
     })
 })
 
@@ -44,7 +44,7 @@ router.patch('/', [
 
     let salgsKurv = { ...req.body }
     Db.updateSalgsKurv(salgsKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsKurv);
     })
 })
 
@@ -59,7 +59,7 @@ router.delete('/', [
 
     let salgsKurv = { ...req.body }
     Db.deleteSalgsKurv(salgsKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsKurv);
     })
 })
 

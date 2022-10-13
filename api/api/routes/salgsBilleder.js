@@ -24,7 +24,7 @@ router.post('/', [
 
     let salgsBilleder = { ...req.body }
     Db.addSalgsBillede(salgsBilleder).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsBilleder);
     })
 })
 

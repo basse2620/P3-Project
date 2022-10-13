@@ -34,22 +34,6 @@ async function addLaaneKurv(laaneKurv) {
     }
 }
 
-// Updatere laane kurven
-async function updateLaaneKurv(laaneKurv) {
-    try {
-        let pool = await sql.connect(config);
-        let updateLaaneKurv = await pool.request()
-            .input('filmId', sql.Int, laaneFilm.filmId)
-            .input('pris', sql.Decimal, laaneFilm.pris)
-            .input('rabat', sql.Decimal, laaneKurv.rabat)
-            .query("Update LaaneKurv Set pris = @pris, rabat = @rabat Where FK_kurvId = @kurvId");
-        return updateLaaneKurv.recordsets;
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
-
 // Slettere lanne kurv
 async function deleteLaaneKurv(laaneKurv) {
     try {
@@ -68,6 +52,5 @@ async function deleteLaaneKurv(laaneKurv) {
 module.exports = {
     getLaaneKurv: getLaaneKurv,
     addLaaneKurv: addLaaneKurv,
-    updateLaaneKurv: updateLaaneKurv,
     deleteLaaneKurv: deleteLaaneKurv
 }

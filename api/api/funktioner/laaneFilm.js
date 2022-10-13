@@ -93,7 +93,8 @@ async function updateLaaneFilmPris(laaneFilm) {
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, laaneFilm.filmId)
             .input('pris', sql.Decimal, laaneFilm.pris)
-            .query("Update LaaneFilm Set pris = @pris Where PK_filmId = @filmId");
+            .query("Update LaaneFilm Set pris = @pris Where PK_filmId = @filmId \
+                    Update LaaneKurv Set pris = @pris Where FK_filmId = @filmId");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -108,7 +109,8 @@ async function updateLaaneFilmRabat(laaneFilm) {
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, laaneFilm.filmId)
             .input('rabat', sql.Decimal, laaneFilm.rabat)
-            .query("Update LaaneFilm Set rabat = @rabat Where PK_filmId = @filmId");
+            .query("Update LaaneFilm Set rabat = @rabat Where PK_filmId = @filmId \
+                    Update LaaneKurv Set rabat = @rabat Where FK_filmId = @filmId");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -123,7 +125,8 @@ async function updateLaaneFilmRabatA(laaneFilm) {
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, laaneFilm.filmId)
             .input('rabat', sql.Decimal, laaneFilm.rabat)
-            .query("Update LaaneFilm Set rabat = @rabat");
+            .query("Update LaaneFilm Set rabat = @rabat \
+                    Update LaaneKurv Set rabat = @rabat");
         return updateFilm.recordsets;
     }
     catch (err) {

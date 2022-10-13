@@ -26,7 +26,7 @@ router.post('/', [
 
     let salgsOrdreDetaljer = { ...req.body }
     Db.addSalgsOrdreDetaljer(salgsOrdreDetaljer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsOrdreDetaljer);
     })
 })
 
@@ -44,7 +44,7 @@ router.patch('/', [
 
     let salgsOrdreDetaljer = { ...req.body }
     Db.updateSalgsOrdreDetaljer(salgsOrdreDetaljer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsOrdreDetaljer);
     })
 })
 

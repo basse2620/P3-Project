@@ -25,7 +25,7 @@ router.post('/', [
 
     let laaneBillede = { ...req.body }
     Db.addLaaneBillede(laaneBillede).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneBillede);
     })
 })
 module.exports = router;

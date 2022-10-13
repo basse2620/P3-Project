@@ -52,7 +52,7 @@ async function addOrdre(ordre) {
             .input('addresseId', sql.Int, ordre.addresseId)
             .input('brugernavn', sql.NVarChar, ordre.brugernavn)
             .query("Insert Into Ordre (totalPris, FK_statusId, FK_addresseId, FK_brugernavn) \
-        Values (@totalPris, @statusId, @addresseId, @brugernavn)");
+                    Values (@totalPris, @statusId, @addresseId, @brugernavn)");
         return insertOrdre.recordsets;
     }
     catch (err) {

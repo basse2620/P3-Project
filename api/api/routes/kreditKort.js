@@ -27,7 +27,7 @@ router.post('/', [
 
     let kreditKort = { ...req.body }
     Db.addKreditKort(kreditKort).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(kreditKort);
     })
 })
 
@@ -46,7 +46,7 @@ router.patch('/', [
 
     let kreditKort = { ...req.body }
     Db.updateKreditKortSaldo(kreditKort).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(kreditKort);
     })
 })
 
@@ -65,7 +65,7 @@ router.delete('/', [
 
     let kreditKort = { ...req.body }
     Db.deleteKreditKort(kreditKort).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(kreditKort);
     })
 })
 

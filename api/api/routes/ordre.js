@@ -1,7 +1,7 @@
 const Db = require('../funktioner/ordre');
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
+const { check, validationResult, body } = require('express-validator');
 const { req, res } = require('express');
 
 const Ordre = require("../models/ordre");
@@ -38,11 +38,11 @@ router.post('/', [
 
     let ordre = { ...req.body }
     Db.addOrdre(ordre).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(ordre);
     })
 })
 
-router.patch('/', [
+router.patch('/dato-sendt', [
     check('datoSendt').notEmpty().withMessage("Dato sendt maa ikke vaere tomt"),
     check('statusId').notEmpty().withMessage("Status id'et maa ikke vaere tomt"),
     check('ordreId').notEmpty().withMessage("Ordre id'et maa ikke vaere tomt"),
@@ -55,7 +55,7 @@ router.patch('/', [
 
     let ordre = { ...req.body }
     Db.updateOrdre(ordre).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(ordre);
     })
 })
 
@@ -71,7 +71,7 @@ router.patch('/pris', [
 
     let ordre = { ...req.body }
     Db.updateOrdrePris(ordre).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(ordre);
     })
 })
 
@@ -87,7 +87,7 @@ router.patch('/status', [
 
     let ordre = { ...req.body }
     Db.updateOrdreStatus(ordre).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(ordre);
     })
 })
 

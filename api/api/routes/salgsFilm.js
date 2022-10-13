@@ -43,7 +43,7 @@ router.post('/', [
 
     let salgsFilm = { ...req.body }
     Db.addSalgsFilm(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
@@ -59,7 +59,7 @@ router.patch('/pris', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmPris(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
@@ -75,7 +75,7 @@ router.patch('/rabat', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmRabat(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
@@ -90,7 +90,7 @@ router.patch('/rabat-alle', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmRabatA(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
@@ -106,7 +106,7 @@ router.patch('/stand', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmStand(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
@@ -121,7 +121,7 @@ router.delete('/', [
 
     let salgsFilm = { ...req.body }
     Db.deleteSalgsFilm(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
