@@ -167,8 +167,8 @@ FK_filmId int Foreign Key References LaaneFilm(PK_filmId),
 pris decimal not null,
 rabat decimal default 0 not null,
 totalPris as (pris - rabat),
-udlaansDato datetime default current_timestamp not null,
-returDato datetime default dateadd(dd, 14, current_timestamp) not null,
+udlaansDato datetime not null,
+returDato datetime not null,
 FK_statusId int Foreign Key References [Status](PK_statusId) not null,
 Primary Key (FK_ordreId, FK_filmId)
 )
@@ -223,9 +223,9 @@ Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (1, 'Test3.dk',
 Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (2, 'Test4.dk', 'Test4')
 Insert Into Ordre (datoSendt, totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values ('2022-08-23 11:11:11', 200, 1, 1, 'Test1')
 Insert Into Ordre (datoSendt, totalPris, FK_statusId, FK_addresseId, FK_brugernavn) Values ('2022-08-25 14:14:14', 600, 1, 1, 'Test1')
-Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId) Values (1, 1, 70, 20, 1)
-Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId) Values (2, 1, 70, 20, 1)
-Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId) Values (2, 2, 90, 40, 1)
+Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId, udlaansDato, returDato) Values (1, 1, 70, 20, 1, '2022-08-16', '2022-08-30')
+Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId, udlaansDato, returDato) Values (2, 1, 70, 20, 1, '2022-08-16', '2022-08-30')
+Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId, udlaansDato, returDato) Values (2, 2, 90, 40, 1, '2022-08-16', '2022-08-30')
 Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, maengde) Values (1, 1, 70, 20, 4)
 Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, maengde) Values (2, 1, 70, 20, 2)
 Insert Into SalgsOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, maengde) Values (2, 2, 170, 70, 3)
@@ -240,5 +240,3 @@ Insert Into LaaneFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (3, 3)
 Insert Into SalgsFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (1, 1)
 Insert Into SalgsFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (1, 2)
 Insert Into SalgsFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (2, 1)
-Insert Into SalgsFilmInstruktoer (FK_filmId, FK_instruktoerId) Values (2, 1)
-
