@@ -7,8 +7,8 @@ async function getSalgsBillede(filmId) {
     try {
         let pool = await sql.connect(config);
         let billede = await pool.request()
-            .input('filmId'.sql.Int, filmId)
-            .query("Select * From SalgsBilleder where FK_filmId = @filmId");
+            .input('filmId', sql.Int, filmId)
+            .query("Select * From SalgsBilledere where FK_filmId = @filmId");
         return billede.recordset;
     }
     catch (error) {
@@ -21,10 +21,10 @@ async function addSalgsBillede(salgsBillede) {
     try {
         let pool = await sql.connect(config);
         let insertBillede = await pool.request()
-            .input('filmId', sql.Int, laanebillede.filmId)
-            .input('link', sql.NVarChar, laanebillede.link)
-            .input('beskrivelse', sql.NVarChar, laanebillede.beskrivelse)
-            .query("Insert Into Kurv (FK_filmId, link, beskrivelse) Values (@filmId, @link, @beskrivelse)");
+            .input('filmId', sql.Int, salgsBillede.filmId)
+            .input('link', sql.NVarChar, salgsBillede.link)
+            .input('beskrivelse', sql.NVarChar, salgsBillede.beskrivelse)
+            .query("Insert Into SalgsBilledere (FK_filmId, link, beskrivelse) Values (@filmId, @link, @beskrivelse)");
         return insertBillede.recordsets;
     }
     catch (err) {

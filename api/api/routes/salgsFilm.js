@@ -32,7 +32,10 @@ router.get('/instruktoer/:id', (req, res) => {
 
 router.post('/', [
     check('filmNavn').notEmpty().withMessage('Film navnet maa ikke vaere tomt'),
-    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom'),
+    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
+    check('rabat').notEmpty().withMessage('Rabaten maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
     check('stand').notEmpty().withMessage('Standen maa ikke vaere tom'),
 ], (req, res) => {
 
@@ -49,7 +52,8 @@ router.post('/', [
 
 router.patch('/pris', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom'),
+    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -65,7 +69,8 @@ router.patch('/pris', [
 
 router.patch('/rabat', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('rabat').notEmpty().withMessage('Rabat maa ikke vaere tom'),
+    check('rabat').notEmpty().withMessage('Rabat maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -80,7 +85,8 @@ router.patch('/rabat', [
 })
 
 router.patch('/rabat-alle', [
-    check('rabat').notEmpty().withMessage('Prisen maa ikke vaere tom'),
+    check('rabat').notEmpty().withMessage('Prisen maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -96,7 +102,8 @@ router.patch('/rabat-alle', [
 
 router.patch('/stand', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('stand').notEmpty().withMessage('Stand maa ikke vaere tom'),
+    check('stand').notEmpty().withMessage('Stand maa ikke vaere tom')
+    .isDecimal().withMessage("Standen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -111,7 +118,8 @@ router.patch('/stand', [
 })
 
 router.delete('/', [
-    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
+    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt")
+    .isDecimal().withMessage("film id'et skal være et tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);

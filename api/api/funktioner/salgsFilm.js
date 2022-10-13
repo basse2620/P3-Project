@@ -55,7 +55,7 @@ async function getSalgsFilmI(instruktoerId) {
             .input('instruktoerId', sql.Int, instruktoerId)
             .query("SELECT * from SalgsFilm as sf \
         Inner Join SalgsFilmInstruktoer as sfi \
-        on sf.PK_filmId = sfg.FK_filmId \
+        on sf.PK_filmId = sfi.FK_filmId \
         Inner Join Instruktoer as i \
         on sfi.FK_instruktoerId = i.PK_instruktoerId \
         where i.PK_instruktoerId = @instruktoerId");
@@ -76,7 +76,7 @@ async function addSalgsFilm(salgsFilm) {
             .input('rabat', sql.Decimal, salgsFilm.rabat)
             .input('stand', sql.Int, salgsFilm.stand)
             .query("Insert Into SalgsFilm (filmNavn, pris, rabat, stand) \
-        Values (@filmNavn, @pris, @rabat, stand)");
+        Values (@filmNavn, @pris, @rabat, @stand)");
         return insertFilm.recordsets;
     }
     catch (err) {
@@ -91,7 +91,8 @@ async function updateSalgsFilmPris(salgsFilm) {
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, salgsFilm.filmId)
             .input('pris', sql.Decimal, salgsFilm.pris)
-            .query("Update SalgsFilm Set pris = @pris Where PK_filmId = @filmId");
+            .query("Update SalgsFilm Set pris = @pris Where PK_filmId = @filmId \
+                    Update SalgsKurv Set pris = @pris Where fk_filmId = @filmId");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -106,7 +107,8 @@ async function updateSalgsFilmRabat(salgsFilm) {
         let updateFilm = await pool.request()
             .input('filmId', sql.Int, salgsFilm.filmId)
             .input('rabat', sql.Decimal, salgsFilm.rabat)
-            .query("Update SalgsFilm Set rabat = @rabat Where PK_filmId = @filmId");
+            .query("Update SalgsFilm Set rabat = @rabat Where PK_filmId = @filmId \
+                    Update SalgsKurv Set rabat = @rabat Where fk_filmId = @filmId");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -119,9 +121,9 @@ async function updateSalgsFilmRabatA(salgsFilm) {
     try {
         let pool = await sql.connect(config);
         let updateFilm = await pool.request()
-            .input('filmId', sql.Int, salgsFilm.filmId)
             .input('rabat', sql.Decimal, salgsFilm.rabat)
-            .query("Update SalgsFilm Set rabat = @rabat");
+            .query("Update SalgsFilm Set rabat = @rabat \
+                    Update SalgsKurv Set rabat = @rabat");
         return updateFilm.recordsets;
     }
     catch (err) {
@@ -148,8 +150,8 @@ async function deleteSalgsFilm(salgsFilm) {
     try {
         let pool = await sql.connect(config);
         let deleteSalgsFilm = await pool.request()
-            .input('filmId', sql.Int, salgsKurv.filmId)
-            .query("Delete From SalgsFilm where FK_filmId = @filmId");
+            .input('filmId', sql.Int, salgsFilm.filmId)
+            .query("Delete From SalgsFilm where PK_filmId = @filmId");
         return deleteSalgsFilm.recordsets;
     }
     catch (err) {
