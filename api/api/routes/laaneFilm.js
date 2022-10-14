@@ -43,7 +43,7 @@ router.post('/', [
 
     let laaneFilm = { ...req.body }
     Db.addLaaneFilm(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -59,7 +59,7 @@ router.patch('/pris', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmPris(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -75,7 +75,7 @@ router.patch('/rabat', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmRabat(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -90,7 +90,7 @@ router.patch('/rabat-alle', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmRabatA(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -106,7 +106,7 @@ router.patch('/maengde', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmMaengde(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -122,7 +122,7 @@ router.patch('/udlaant', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmUdlaant(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -138,7 +138,7 @@ router.patch('/resevert', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmResevert(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -155,7 +155,7 @@ router.patch('/forventet', [
 
     let laaneFilm = { ...req.body }
     Db.updateLaaneFilmForventet(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 
@@ -170,7 +170,7 @@ router.delete('/', [
 
     let laaneFilm = { ...req.body }
     Db.deleteLaaneFilm(laaneFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneFilm);
     })
 })
 

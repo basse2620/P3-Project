@@ -33,7 +33,7 @@ router.post('/', [
 
     let bruger = { ...req.body }
     Db.addBruger(bruger).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(bruger);
     })
 })
 
@@ -50,7 +50,7 @@ router.patch('/', [
     
     let bruger = { ...req.body }
     Db.updateBruger(bruger).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(bruger);
     })
 })
 

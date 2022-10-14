@@ -7,7 +7,7 @@ const { req, res } = require('express');
 const SalgsOrdreDetaljer = require("../models/salgsOrdreDetaljer");
 
 router.get('/:id', (req, res) => {
-    Db.getSalgsOrdreDetaljer(req.params.id).then((data) => {
+    Db.getSaglsOrdreDetaljer(req.params.id).then((data) => {
         res.json(data[0]);
     })
 })
@@ -26,25 +26,7 @@ router.post('/', [
 
     let salgsOrdreDetaljer = { ...req.body }
     Db.addSalgsOrdreDetaljer(salgsOrdreDetaljer).then(data => {
-        res.status(201).json(data);
-    })
-})
-
-router.patch('/', [
-    check('ordreId').notEmpty().withMessage("Ordre id'et navnet maa ikke vaere tomt"),
-    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('pris').notEmpty().withMessage("Prisen maa ikke vaere tomt"),
-    check('maengde').notEmpty().withMessage("Maengden må ikke vaere tom")
-], (req, res) => {
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-
-    let salgsOrdreDetaljer = { ...req.body }
-    Db.updateSalgsOrdreDetaljer(salgsOrdreDetaljer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsOrdreDetaljer);
     })
 })
 

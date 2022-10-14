@@ -7,7 +7,7 @@ async function getLaaneOrdreDetaljer(ordreId) {
     try {
         let pool = await sql.connect(config);
         let laaneOrdre = await pool.request()
-            .input('ordreId', sql.Int, id)
+            .input('ordreId', sql.Int, ordreId)
             .query("SELECT * from LaaneOrdreDetaljer where FK_ordreId = @ordreId");
         return laaneOrdre.recordsets;
     }
@@ -25,11 +25,11 @@ async function addLaaneOrdreDetaljer(laaneOrdreDetaljer) {
             .input('filmId', sql.Int, laaneOrdreDetaljer.filmId)
             .input('pris', sql.Decimal, laaneOrdreDetaljer.pris)
             .input('rabat', sql.Decimal, laaneOrdreDetaljer.rabat)
-            .input('udlaansDato', sq.DateTime, laaneOrdreDetaljer.udlaabsDato)
-            .input('returDato', sql.DateTime, laaneOrdreDetaljer.returDato)
             .input('statusId', sql.Int, laaneOrdreDetaljer.statusId)
-            .query("Insert Into LaaneOrdreDetaljer  (FK_ordreId, FK_filmId, pris, rabat, udlaansDato, returDato, FK_statusId) \
-      Values (@ordreId, @filmId, @pris, @rabat, @udlaansDato, @returDato, @statusId)");
+            .input('udlaansDato', sql.DateTime, laaneOrdreDetaljer.udlaansDato)
+            .input('returDato', sql.DateTime, laaneOrdreDetaljer.returDato)
+            .query("Insert Into LaaneOrdreDetaljer (FK_ordreId, FK_filmId, pris, rabat, FK_statusId, udlaansDato, returDato) \
+                    Values (@ordreId, @filmId, @pris, @rabat, @statusId, @udlaansDato, @returDato)");
         return insertLaaneOrdre.recordsets;
     }
     catch (err) {

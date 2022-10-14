@@ -25,24 +25,7 @@ router.post('/', [
 
     let laaneKurv = { ...req.body }
     Db.addLaaneKurv(laaneKurv).then(data => {
-        res.status(201).json(data);
-    })
-})
-
-router.patch('/', [
-    check('kurvId').notEmpty().withMessage("Kurv id'et navnet maa ikke vaere tomt"),
-    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('pris').notEmpty().withMessage("Prisen maa ikke vaere tomt"),
-], (req, res) => {
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-
-    let laaneKurv = { ...req.body }
-    Db.updateLaaneKurv(laaneKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneKurv);
     })
 })
 
@@ -58,7 +41,7 @@ router.delete('/', [
 
     let laaneKurv = { ...req.body }
     Db.deleteLaaneKurv(laaneKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneKurv);
     })
 })
 

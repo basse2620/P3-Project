@@ -8,7 +8,7 @@ async function getSalgsKurv(kurvId) {
         let pool = await sql.connect(config);
         let kurv = await pool.request()
             .input('kurvId', sql.Int, kurvId)
-            .query("SELECT * from SalgsKurv where PK_kurvId = @kurvId");
+            .query("SELECT * from SalgsKurv where FK_kurvId = @kurvId");
         return kurv.recordsets;
     }
     catch (error) {
@@ -26,8 +26,8 @@ async function addSalgsKurv(salgsKurv) {
             .input('pris', sql.Int, salgsKurv.pris)
             .input('rabat', sql.Int, salgsKurv.rabat)
             .input('maengde', sql.Int, salgsKurv.maengde)
-            .query("Insert Into SalgsFilmInstruktoer (FK_kurvId, FK_filmId, pris, rabat, maengde) \
-        Values (@kurvId, @filmId, @pris, @rabat, @maengde)");
+            .query("Insert Into SalgsKurv (FK_kurvId, FK_filmId, pris, rabat, maengde) \
+                    Values (@kurvId, @filmId, @pris, @rabat, @maengde)");
         return insertKurv.recordsets;
     }
     catch (err) {
@@ -41,10 +41,9 @@ async function updateSalgsKurv(saglsKurv) {
         let pool = await sql.connect(config);
         let updateKurv = await pool.request()
             .input('filmId', sql.Int, saglsKurv.filmId)
-            .input('pris', sql.Decimal, saglsKurv.pris)
-            .input('rabat', sql.Decimal, saglsKurv.rabat)
+            .input('kurvId', sql.Int, saglsKurv.kurvId)
             .input('maengde', sql.Int, saglsKurv.maengde)
-            .query("Update SaglsKurv Set pris = @pris, rabat = @rabat, maengde = @maengde Where FK_kurvId = @kurvId");
+            .query("Update SalgsKurv Set maengde = @maengde Where FK_kurvId = @kurvId and FK_filmId = @filmId");
         return updateKurv.recordsets;
     }
     catch (err) {
@@ -57,7 +56,8 @@ async function deleteSalgsKurv(saglsKurv) {
         let pool = await sql.connect(config);
         let deleteSalgsKurv = await pool.request()
             .input('kurvId', sql.Int, saglsKurv.kurvId)
-            .query("Delete From SalgsKurv where FK_kurvId = @kurvId");
+            .input('filmId', sql.Int, saglsKurv.filmId)
+            .query("Delete From SalgsKurv where FK_kurvId = @kurvId and FK_filmId = @filmId");
         return deleteSalgsKurv.recordsets;
     }
     catch (err) {

@@ -43,7 +43,7 @@ router.post('/', [
 
     let instruktoer = { ...req.body }
     Db.addInstruktoer(instruktoer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(instruktoer);
     })
 })
 
@@ -60,7 +60,7 @@ router.patch('/', [
 
     let instruktoer = { ...req.body }
     Db.updateInstruktoer(instruktoer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(instruktoer);
     })
 })
 

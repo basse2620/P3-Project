@@ -36,7 +36,7 @@ router.post('/', [
 
     let kurv = { ...req.body }
     Db.addKurv(kurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(kurv);
     })
 })
 
@@ -52,7 +52,7 @@ router.patch('/', [
 
     let kurv = { ...req.body }
     Db.updateKurv(kurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(kurv);
     })
 })
 

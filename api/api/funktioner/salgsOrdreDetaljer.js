@@ -7,7 +7,7 @@ async function getSaglsOrdreDetaljer(ordreId) {
     try {
         let pool = await sql.connect(config);
         let saglsOrdre = await pool.request()
-            .input('ordreId', sql.Int, id)
+            .input('ordreId', sql.Int, ordreId)
             .query("SELECT * from SalgsOrdreDetaljer where FK_ordreId = @ordreId");
         return saglsOrdre.recordsets;
     }
@@ -21,7 +21,7 @@ async function addSalgsOrdreDetaljer(salgsOrdreDetaljer) {
     try {
         let pool = await sql.connect(config);
         let insertSaglsOrdre = await pool.request()
-            .input('ordreId', sql.Int, salgsOrdreDetaljer.kurvId)
+            .input('ordreId', sql.Int, salgsOrdreDetaljer.ordreId)
             .input('filmId', sql.Int, salgsOrdreDetaljer.filmId)
             .input('pris', sql.Decimal, salgsOrdreDetaljer.pris)
             .input('rabat', sql.Decimal, salgsOrdreDetaljer.rabat)
@@ -35,23 +35,7 @@ async function addSalgsOrdreDetaljer(salgsOrdreDetaljer) {
     }
 }
 
-// Updatere laane ordre detaljer
-async function updateSalgsOrdreDetaljer(salgsOrdreDetaljer) {
-    try {
-        let pool = await sql.connect(config);
-        let updateSaglsOrdre = await pool.request()
-            .input('ordreId', sql.Int, salgsOrdreDetaljer.ordreId)
-            .input('statusId', sql.Int, salgsOrdreDetaljer.statusId)
-            .query("Update salgsOrdreDetaljer Set FK_statusId = @statusId Where FK_ordreId = @ordreId");
-        return updateSaglsOrdre.recordsets;
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
-
 module.exports = {
     getSaglsOrdreDetaljer: getSaglsOrdreDetaljer,
     addSalgsOrdreDetaljer: addSalgsOrdreDetaljer,
-    updateSalgsOrdreDetaljer: updateSalgsOrdreDetaljer,
 }

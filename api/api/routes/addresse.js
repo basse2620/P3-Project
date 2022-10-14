@@ -38,7 +38,7 @@ router.post('/', [
 
     let addresse = { ...req.body }
     Db.addAddresse(addresse).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(addresse);
     })
 })
 
@@ -55,7 +55,7 @@ router.patch('/', [
 
     let addresse = { ...req.body }
     Db.updateAddresse(addresse).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(addresse);
     })
 })
 

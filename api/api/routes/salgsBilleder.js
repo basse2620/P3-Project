@@ -13,6 +13,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', [
+    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tom"),
     check('link').notEmpty().withMessage('Link maa ikke vaere tom'),
     check('beskrivelse').notEmpty().withMessage('beskrivelse maa ikke vaere tom'),
 ], (req, res) => {
@@ -24,7 +25,7 @@ router.post('/', [
 
     let salgsBilleder = { ...req.body }
     Db.addSalgsBillede(salgsBilleder).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsBilleder);
     })
 })
 

@@ -32,7 +32,10 @@ router.get('/instruktoer/:id', (req, res) => {
 
 router.post('/', [
     check('filmNavn').notEmpty().withMessage('Film navnet maa ikke vaere tomt'),
-    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom'),
+    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
+    check('rabat').notEmpty().withMessage('Rabaten maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
     check('stand').notEmpty().withMessage('Standen maa ikke vaere tom'),
 ], (req, res) => {
 
@@ -43,13 +46,14 @@ router.post('/', [
 
     let salgsFilm = { ...req.body }
     Db.addSalgsFilm(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
 router.patch('/pris', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom'),
+    check('pris').notEmpty().withMessage('Prisen maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -59,13 +63,14 @@ router.patch('/pris', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmPris(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
 router.patch('/rabat', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('rabat').notEmpty().withMessage('Rabat maa ikke vaere tom'),
+    check('rabat').notEmpty().withMessage('Rabat maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -75,12 +80,13 @@ router.patch('/rabat', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmRabat(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
 router.patch('/rabat-alle', [
-    check('rabat').notEmpty().withMessage('Prisen maa ikke vaere tom'),
+    check('rabat').notEmpty().withMessage('Prisen maa ikke vaere tom')
+    .isDecimal().withMessage("Prisen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -90,13 +96,14 @@ router.patch('/rabat-alle', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmRabatA(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
 router.patch('/stand', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('stand').notEmpty().withMessage('Stand maa ikke vaere tom'),
+    check('stand').notEmpty().withMessage('Stand maa ikke vaere tom')
+    .isDecimal().withMessage("Standen skal være tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -106,12 +113,13 @@ router.patch('/stand', [
 
     let salgsFilm = { ...req.body }
     Db.updateSalgsFilmStand(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 
 router.delete('/', [
-    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
+    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt")
+    .isDecimal().withMessage("film id'et skal være et tal"),
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -121,7 +129,7 @@ router.delete('/', [
 
     let salgsFilm = { ...req.body }
     Db.deleteSalgsFilm(salgsFilm).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsFilm);
     })
 })
 

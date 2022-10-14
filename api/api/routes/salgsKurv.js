@@ -26,14 +26,13 @@ router.post('/', [
 
     let salgsKurv = { ...req.body }
     Db.addSalgsKurv(salgsKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsKurv);
     })
 })
 
 router.patch('/', [
+    check('filmId').notEmpty().withMessage("Film id'et navnet maa ikke vaere tomt"),
     check('kurvId').notEmpty().withMessage("Kurv id'et navnet maa ikke vaere tomt"),
-    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-    check('pris').notEmpty().withMessage("Prisen maa ikke vaere tomt"),    
     check('maengde').notEmpty().withMessage("Maengden maa ikke vaere tomt"),
 ], (req, res) => {
 
@@ -44,7 +43,7 @@ router.patch('/', [
 
     let salgsKurv = { ...req.body }
     Db.updateSalgsKurv(salgsKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsKurv);
     })
 })
 
@@ -59,7 +58,7 @@ router.delete('/', [
 
     let salgsKurv = { ...req.body }
     Db.deleteSalgsKurv(salgsKurv).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(salgsKurv);
     })
 })
 

@@ -17,6 +17,8 @@ router.post('/', [
     check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
     check('pris').notEmpty().withMessage("Prisen maa ikke vaere tomt"),
     check('statusId').notEmpty().withMessage("Status id'et maa ikke vaere tomt"),
+    check('udlaansDato').notEmpty().withMessage("Udlaans dato maa ikke vaere tom").isDate().withMessage("Udlaans dato skal vaere en dato"),
+    check('returDato').notEmpty().withMessage("Retur dato maa ikke vaere tom").isDate().withMessage("Retur dato skal vaere en dato")
 ], (req, res) => {
 
     const errors = validationResult(req);
@@ -26,7 +28,7 @@ router.post('/', [
 
     let laaneOrdreDetaljer = { ...req.body }
     Db.addLaaneOrdreDetaljer(laaneOrdreDetaljer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneOrdreDetaljer);
     })
 })
 
@@ -42,7 +44,7 @@ router.patch('/', [
 
     let laaneOrdreDetaljer = { ...req.body }
     Db.updateLaaneOrdreDetaljer(laaneOrdreDetaljer).then(data => {
-        res.status(201).json(data);
+        res.status(201).json(laaneOrdreDetaljer);
     })
 })
 
