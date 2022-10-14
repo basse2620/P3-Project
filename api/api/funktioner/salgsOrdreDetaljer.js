@@ -35,24 +35,7 @@ async function addSalgsOrdreDetaljer(salgsOrdreDetaljer) {
     }
 }
 
-// Updatere laane ordre detaljer
-async function updateSalgsOrdreDetaljer(salgsOrdreDetaljer) {
-    try {
-        let pool = await sql.connect(config);
-        let updateSaglsOrdre = await pool.request()
-            .input('ordreId', sql.Int, salgsOrdreDetaljer.ordreId)
-            .input('filmId', sql.Int, salgsOrdreDetaljer.filmId)
-            .input('statusId', sql.Int, salgsOrdreDetaljer.statusId)
-            .query("Update salgsOrdreDetaljer Set FK_statusId = @statusId Where FK_ordreId = @ordreId and FK_filmId = @filmId");
-        return updateSaglsOrdre.recordsets;
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
-
 module.exports = {
     getSaglsOrdreDetaljer: getSaglsOrdreDetaljer,
     addSalgsOrdreDetaljer: addSalgsOrdreDetaljer,
-    updateSalgsOrdreDetaljer: updateSalgsOrdreDetaljer,
 }

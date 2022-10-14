@@ -5,13 +5,13 @@ const { password } = require('../../dbconfig');
 // Henter status
 async function getStatus() {
     try {
-        let pool = await pool.request()
-        let status = await pool.request()
-            .query("Select * From Status");
-        return status.recordsets;
+        let pool = await sql.connect(config);
+        let film = await pool.request()
+            .query("SELECT * from Status");
+        return film.recordsets;
     }
-    catch (err) {
-        console.log(err);
+    catch (error) {
+        console.log(error);
     }
 }
 

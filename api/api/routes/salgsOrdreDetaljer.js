@@ -30,20 +30,4 @@ router.post('/', [
     })
 })
 
-router.patch('/', [
-    check('ordreId').notEmpty().withMessage("Ordre id'et navnet maa ikke vaere tomt"),
-    check('filmId').notEmpty().withMessage("Film id'et maa ikke vaere tomt"),
-], (req, res) => {
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-
-    let salgsOrdreDetaljer = { ...req.body }
-    Db.updateSalgsOrdreDetaljer(salgsOrdreDetaljer).then(data => {
-        res.status(201).json(salgsOrdreDetaljer);
-    })
-})
-
 module.exports = router;

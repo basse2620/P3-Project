@@ -6,7 +6,7 @@ const { password } = require('../../dbconfig');
 async function getSalgsFilm() {
     try {
         let pool = await sql.connect(config);
-        let film = await pool.request().query("SELECT * from salgsFilm");
+        let film = await pool.request().query("SELECT * from SalgsFilm");
         return film.recordsets;
     }
     catch (error) {
