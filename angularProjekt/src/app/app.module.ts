@@ -10,6 +10,7 @@ import { MainBodyComponent } from './Component/BodyMenu/main-body/main-body.comp
 import { BodyDisplayContentComponent } from './Component/BodyMenu/body-display-content/body-display-content.component';
 import { MasterBitchComponent } from './Component/master-bitch/master-bitch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
