@@ -1,0 +1,18 @@
+<div class="mainHeader" style="padding: 5px 0px;">
+    <h1 style="margin: 5px 0px 0px 50px; font-size: xx-large;"><a href="">BlockBuster</a></h1>
+    <!-- <input type="text" placeholder="Søg" class="searchBar"> -->
+    
+    <ul style="display: flex; margin: 5px 50px 0px 0px;">    
+        <li><a href="Google.dk"><span>Indkøbskurv</span></a></li>
+        <li><a href="Google.dk"><span>Login</span></a></li>
+        <li> <span style="font-size:30px;cursor:pointer" (click)="openNav()"><mat-icon>search</mat-icon></span></li>
+    </ul>
+    
+</div>
+
+<div id="myNav" class="overlay" style="overflow: hidden;" >
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"><mat-icon style=" background-color: rgba(0,0,0, 0.1);">clear</mat-icon></a>
+    <div class="overlay-content" style="background-color: rgba(0,0,0, 0.1);">
+        <input style="text-align: center; background-color: rgba(29,29,29, 0.1); width: 30%; font-size: X-large; margin: 10% 0px;" type="text" placeholder="Search.." name="search">
+    </div>
+  </div>
