@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Component/HeaderMenu/header/header.component';
 import { LowerHeaderComponent } from './Component/HeaderMenu/lower-header/lower-header.component';
 import { UpperHeaderComponent } from './Component/HeaderMenu/upper-header/upper-header.component';
-import { MainBodyComponent } from './Component/BodyMenu/main-body/main-body.component';
-import { BodyDisplayContentComponent } from './Component/BodyMenu/body-display-content/body-display-content.component';
 import { MasterBitchComponent } from './Component/master-bitch/master-bitch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
+import { BuyDisplayComponent } from './Component/BodyMenu/buy-display/buy-display.component';
+import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-bod.component'; 
 
 @NgModule({
   declarations: [
@@ -18,9 +18,9 @@ import {MatIconModule} from '@angular/material/icon';
     HeaderComponent,
     LowerHeaderComponent,
     UpperHeaderComponent,
-    MainBodyComponent,
-    BodyDisplayContentComponent,
-    MasterBitchComponent
+    MasterBitchComponent,
+    BuyDisplayComponent,
+    MainDadBodComponent,
   ],
   imports: [
     BrowserModule,
