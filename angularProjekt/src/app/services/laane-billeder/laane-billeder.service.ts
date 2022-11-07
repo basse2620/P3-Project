@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SalgsBilledere } from '../interfaces/salgs-billedere';
+import { LaaneBilledere } from '../../interfaces/laane-billedere';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -12,12 +12,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class SalgsBillederService {
-  private apiUrl = 'http://192.168.20.30:8090/sagls-billeder';
+export class LaaneBillederService {
+  private apiUrl = 'http://192.168.20.30:8090/laane-billeder';
 
   constructor(private http: HttpClient) { }
 
-  getSaglsBilleder(): Observable<SalgsBilledere[]> {
-    return this.http.get<SalgsBilledere[]>(this.apiUrl)
+  getLaaneBilleder(): Observable<LaaneBilledere[]> {
+    return this.http.get<LaaneBilledere[]>(this.apiUrl)
   }
 }
