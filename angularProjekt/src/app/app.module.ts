@@ -9,7 +9,6 @@ import { UpperHeaderComponent } from './Component/HeaderMenu/upper-header/upper-
 import { MasterBitchComponent } from './Component/master-bitch/master-bitch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
-import { BuyDisplayComponent } from './Component/BodyMenu/buy-display/buy-display.component';
 import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-bod.component'; 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-
     LowerHeaderComponent,
     UpperHeaderComponent,
     MasterBitchComponent,
-    BuyDisplayComponent,
     MainDadBodComponent,
   ],
   imports: [
