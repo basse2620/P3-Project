@@ -14,26 +14,26 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class GenreService {
+export class InstruktoerService {
   private apiUrl = 'http://192.168.20.30:8090/instruktoer';
 
   constructor(private http: HttpClient) { }
 
-  getGenre(): Observable<Instruktoer[]> {
+  getInstruktoer(): Observable<Instruktoer[]> {
     return this.http.get<Instruktoer[]>(this.apiUrl);
   }
 
-  getGenren(instruktoer: Instruktoer): Observable<Instruktoer> {
+  getInstruktoerId(instruktoer: Instruktoer): Observable<Instruktoer> {
     const url = `${this.apiUrl}/${instruktoer.PK_instruktoerId}`;
     return this.http.get<Instruktoer>(url);
   }
 
-  getGenreLaaneFilm(laaneFilm: LaaneFilm): Observable<Instruktoer> {
+  getInstruktoerLaaneFilm(laaneFilm: LaaneFilm): Observable<Instruktoer> {
     const url = `${this.apiUrl}/${laaneFilm.PK_filmId}`;
     return this.http.get<Instruktoer>(url);
   }
 
-  getGenreSalgsFilm(salgsFilm: SalgsFilm): Observable<Instruktoer> {
+  getInstruktoerSalgsFilm(salgsFilm: SalgsFilm): Observable<Instruktoer> {
     const url = `${this.apiUrl}/${salgsFilm.PK_filmId}`;
     return this.http.get<Instruktoer>(url);
   }
