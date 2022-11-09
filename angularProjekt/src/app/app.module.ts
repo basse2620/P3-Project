@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +12,13 @@ import { UpperHeaderComponent } from './Component/HeaderMenu/upper-header/upper-
 import { MasterBitchComponent } from './Component/master-bitch/master-bitch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
-import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-bod.component'; 
+import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-bod.component';
+import { BuydisplayComponent } from './Component/BodyMenu/buydisplay/buydisplay.component';
+import { BuydisplaySubComponent } from './Component/BodyMenu/buydisplay-sub/buydisplay-sub.component';
+
+const appRoutes: Routes = [
+  {path: '', component: BuydisplayComponent}
+]
 
 @NgModule({
   declarations: [
@@ -19,12 +28,17 @@ import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-
     UpperHeaderComponent,
     MasterBitchComponent,
     MainDadBodComponent,
+    BuydisplayComponent,
+    BuydisplaySubComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
