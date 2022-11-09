@@ -21,6 +21,11 @@ export class LaaneBillederService {
     return this.http.get<LaaneBilledere[]>(this.apiUrl)
   }
 
+  getLaaneKurv(laaneBilledere: LaaneBilledere): Observable<LaaneBilledere> {
+    const url = `${this.apiUrl}/${laaneBilledere.FK_filmId}`;
+    return this.http.get<LaaneBilledere>(url);
+  }
+
   addLaaneBilledere(laaneBilledere: LaaneBilledere): Observable<LaaneBilledere> {
     return this.http.post<LaaneBilledere>(this.apiUrl, laaneBilledere, httpOptions)
   }
