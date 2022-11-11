@@ -88,3 +88,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0, 0.1);
   }
+  .MainDivImg{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    width: 250px; 
+    height: 375px; 
+    display: flex; 
+    float: left;
+  }
+  .Img123{
+    position: relative;
+    top: 0;
+    left: 0;
+    
+    border-radius: 5%; 
+    margin: 5px; 
+    width: 96%; 
+    height: 96%;
+  }
+  .H2img{
+    position: absolute;
+    top: 160px;
+    left: 100px;
+    
+    border: 1px solid #000000;
+    background-color: Red; 
+    width: 50%; 
+    height: 50%;
+  }
