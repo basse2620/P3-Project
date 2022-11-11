@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LaaneBilledere } from '../interfaces/laane-billedere';
+import { LaaneBilledere } from '../../interfaces/laane-billedere';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,5 +19,14 @@ export class LaaneBillederService {
 
   getLaaneBilleder(): Observable<LaaneBilledere[]> {
     return this.http.get<LaaneBilledere[]>(this.apiUrl)
+  }
+
+  getLaaneKurv(laaneBilledere: LaaneBilledere): Observable<LaaneBilledere> {
+    const url = `${this.apiUrl}/${laaneBilledere.FK_filmId}`;
+    return this.http.get<LaaneBilledere>(url);
+  }
+
+  addLaaneBilledere(laaneBilledere: LaaneBilledere): Observable<LaaneBilledere> {
+    return this.http.post<LaaneBilledere>(this.apiUrl, laaneBilledere, httpOptions)
   }
 }

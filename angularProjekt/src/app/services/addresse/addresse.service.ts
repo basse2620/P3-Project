@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Addresse } from '../interfaces/addresse';
+import { Addresse } from '../../interfaces/addresse';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -31,8 +31,12 @@ export class AddresseService {
     return this.http.get<Addresse>(url);
   }
 
-  deleteAddresse(address: Addresse): Observable<Addresse> {
+  postAddresse(address: Addresse): Observable<Addresse> {
+    return this.http.post<Addresse>(this.apiUrl, address, httpOptions);
+  }
+
+  updateAddress(address: Addresse): Observable<Addresse> {
     const url = `${this.apiUrl}/${address.PK_addresseId}`;
-    return this.http.get<Addresse>(url);
+    return this.http.put<Addresse>(url, address, httpOptions);
   }
 }
