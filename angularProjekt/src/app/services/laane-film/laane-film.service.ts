@@ -22,7 +22,7 @@ export class LaaneFilmService {
     return this.http.get<LaaneFilm[]>(this.apiUrl)
   }
 
-  getLaaneKurv(laaneFilm: LaaneFilm): Observable<LaaneFilm> {
+  getLaaneFilmen(laaneFilm: LaaneFilm): Observable<LaaneFilm> {
     const url = `${this.apiUrl}/${laaneFilm.PK_filmId}`;
     return this.http.get<LaaneFilm>(url);
   }
