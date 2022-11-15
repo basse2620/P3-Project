@@ -110,11 +110,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   .H2img{
     position: absolute;
-    top: 160px;
-    left: 100px;
+    top: 70%;
+    left: 2.5%;
     
+    text-align: center;
     border: 1px solid #000000;
-    background-color: Red; 
-    width: 50%; 
-    height: 50%;
+    background-color: rgba(0,0,0, 0.8);
+    height: 10%;
+    width: 95%;
   }
