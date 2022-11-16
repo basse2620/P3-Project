@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LaaneBillederService } from 'src/app/services/laane-billeder.service'
+import { LaaneBillederService } from '../../../services/laane-billeder/laane-billeder.service'
 import { LaaneBilledere } from 'src/app/interfaces/laane-billedere';
-import { AddresseService } from 'src/app/services/addresse.service';
+import { AddresseService } from '../../../services/addresse/addresse.service';
 import { Addresse } from 'src/app/interfaces/addresse';
 
 
