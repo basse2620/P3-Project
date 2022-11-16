@@ -1,22 +1,12 @@
 <div
 *ngFor="let Karl of lBs"
 style="margin: 0px 2%;" >
-    <div style="width: 12.5%; height: 375px; display: flex; float: left;">
-        <img  style="border-radius: 5%; margin: 10px; width: 96%; height: 96%;" (click)="PressOn(Karl)" src="{{Karl.link}}" alt="">
-        <h2 style="background-color: Red; width: 50%; height: 50%;">jeppejeppe</h2>
-        <!-- <div style="background-color: #1D1D1D; width: 50%; height: 50%;">
-            <h2>jeppejeppe</h2>
-        </div> -->
+    <div class="MainDivImg">
+        <img class="Img123" id="ImgDisplay" (click)="PressOn(Karl)" src="{{Karl.link}}" alt="">
+        <h2 Class="H2img" style="font-size: medium;">{{Karl.beskrivelse}}</h2>
     </div>
 </div>
 
-<!-- <p
-*ngFor="let jeppe of addre">
-{{jeppe.addresse}}
-</p> 
-style=""
-
--->
 
 
 
