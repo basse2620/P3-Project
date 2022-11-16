@@ -35,7 +35,7 @@ export class LaaneFilmService {
 
   }
 
-  addLaaneBilledere(laaneFilm: LaaneFilm): Observable<LaaneFilm> {
+  addLaaneFilm(laaneFilm: LaaneFilm): Observable<LaaneFilm> {
     return this.http.post<LaaneFilm>(this.apiUrl, laaneFilm, httpOptions)
   }
 }
