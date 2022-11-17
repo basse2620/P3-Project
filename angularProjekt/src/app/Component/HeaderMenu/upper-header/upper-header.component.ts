@@ -12,12 +12,21 @@ export class UpperHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openNav() {
-    document.getElementById("myNav").style.height = "100%";
+  openSearch() {
+    document.getElementById("mySearch").style.height = "100%";
     //tsconfig.json: "strictNullChecks": false,
   }
   
-  closeNav() {
-    document.getElementById("myNav").style.height = "0%";
+  closeSearch() {
+    document.getElementById("mySearch").style.height = "0%";
   }
+
+  openNav(){
+    document.getElementById("myNavLog").style.height = "100%";
+  }
+
+  closeNav(){
+    document.getElementById("myNavLog").style.height = "0%";
+  }
+
 }

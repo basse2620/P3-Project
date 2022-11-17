@@ -1,9 +1,11 @@
-<div
-*ngFor="let Karl of lBs"
-style="margin: 0px 2%;" >
-    <div class="MainDivImg">
-        <img class="Img123" id="ImgDisplay" (click)="PressOn(Karl)" src="{{Karl.link}}" alt="">
-        <h2 Class="H2img" style="font-size: medium;">{{Karl.beskrivelse}}</h2>
+<div>
+    <div
+    *ngFor="let Jeppe of Entity"
+    style="margin: 0px 10%;" >
+        <div class="MainDivImg">
+            <img class="Img123" id="ImgDisplay" (click)="PressOn(Jeppe)" src="{{Jeppe.billedeLink}}">
+            <h2 Class="H2img" style="font-size: medium;">{{Jeppe.filmNavn}} <br/> {{Jeppe.pris}},-</h2>        
+        </div>
     </div>
 </div>
 

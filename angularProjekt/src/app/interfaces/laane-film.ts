@@ -7,5 +7,5 @@ export interface LaaneFilm {
     udlaant: number;
     resevert: number;
     forventetDato: Date;
-    billedLinks: string;
+    billedeLink: string;
 }
