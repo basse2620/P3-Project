@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { LaaneKurv } from 'src/app/interfaces/laane-kurv';
 
 const httpOptions = {
@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LaaneKurvService {
-  private apiUrl = 'http://192.168.20.30:8090/laane-film-instruktoer';
+  private apiUrl = 'http://192.168.20.30:8090/laane-kurv';
 
   constructor(private http: HttpClient) { }
 
