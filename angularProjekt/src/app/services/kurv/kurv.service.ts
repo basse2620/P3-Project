@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { Kurv } from '../../interfaces/kurv';
 
 const httpOptions = {
@@ -20,6 +20,11 @@ export class KurvService {
   getKurv(kurv: Kurv): Observable<Kurv> {
     const url = `${this.apiUrl}/${kurv.FK_brugernavn}`;
     return this.http.get<Kurv>(url);
+  }
+
+  getKurven(kurv: Kurv) {
+    let laaneKurv1 = this.http.get<l>(`${this.apiUrl}/${kurv.FK_brugernavn}`);
+    let salgsKurv1 = 
   }
 
   getLaaneKurv(kurv: Kurv): Observable<Kurv> {

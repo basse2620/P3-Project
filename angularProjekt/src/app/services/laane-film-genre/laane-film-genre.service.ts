@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LaaneBilledere } from '../../interfaces/laane-billedere';
+import { LaaneFilmGenre } from 'src/app/interfaces/laane-film-genre';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,6 +13,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LaaneFilmGenreService {
+  private apiUrl = 'http://192.168.20.30:8090/laane-film-genre';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  addLaaneFilmGenre(laaneFilmGenre: LaaneFilmGenre): Observable<LaaneFilmGenre> {
+    return this.http.post<LaaneFilmGenre>(this.apiUrl, laaneFilmGenre, httpOptions)
+  }
 }

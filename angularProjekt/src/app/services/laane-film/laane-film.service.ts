@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin, tap } from 'rxjs';
 import { LaaneFilm } from '../../interfaces/laane-film';
-import { LaaneFilmGenre } from 'src/app/interfaces/laane-film-genre';
+import { LaaneFilmGenreSam } from 'src/app/interfaces/laane-film-genre-sam';
+import { LaaneFilmInstruktoerSam } from 'src/app/interfaces/laane-film-instruktoer-sam';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -27,15 +28,17 @@ export class LaaneFilmService {
     return this.http.get<LaaneFilm>(url);
   }
 
-  Test(laaneFilm: LaaneFilm, laaneFilmGenre: LaaneFilmGenre) {
-    forkJoin([
-      this.http.get(`${this.apiUrl}/${laaneFilm.PK_filmId}`).pipe(tap(film => laaneFilm)),
-      this.http.get(``)
-    ])
-
+  getLaaneFilmGenre(laaneFilmGenreSam: LaaneFilmGenreSam): Observable<LaaneFilm> {
+    const url = `${this.apiUrl}/genre/${laaneFilmGenreSam.PK_genreId}`;
+    return this.http.get<LaaneFilm>(url);
   }
 
-  addLaaneBilledere(laaneFilm: LaaneFilm): Observable<LaaneFilm> {
+  getLaaneFilmInstruktoer(LaaneFilmInstruktoerSam: LaaneFilmInstruktoerSam): Observable<LaaneFilm> {
+    const url = `${this.apiUrl}/genre/${LaaneFilmInstruktoerSam.PK_instruktoerId}`;
+    return this.http.get<LaaneFilm>(url);
+  }
+
+  addLaaneFilm(laaneFilm: LaaneFilm): Observable<LaaneFilm> {
     return this.http.post<LaaneFilm>(this.apiUrl, laaneFilm, httpOptions)
   }
 }
