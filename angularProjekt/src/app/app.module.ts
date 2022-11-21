@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-bod.component';
 import { BuydisplayComponent } from './Component/BodyMenu/buydisplay/buydisplay.component';
 import { BuydisplaySubComponent } from './Component/BodyMenu/buydisplay-sub/buydisplay-sub.component';
+import { InformationscreenbodyComponent } from './Component/pickedsite/informationscreen/informationscreenbody/informationscreenbody.component'
 
 const appRoutes: Routes = [
   {path: '', component: BuydisplayComponent}
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     MainDadBodComponent,
     BuydisplayComponent,
     BuydisplaySubComponent,
+    InformationscreenbodyComponent,
   ],
   imports: [
     BrowserModule,
