@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, map } from 'rxjs';
 import { Kurv } from '../../interfaces/kurv';
+import { LaaneKurv } from 'src/app/interfaces/laane-kurv';
+import { SalgsKurv } from 'src/app/interfaces/salgs-kurv';
+import { LaaneKurvSam } from 'src/app/interfaces/laane-kurv-sam';
+import { SalgsKurvSam } from 'src/app/interfaces/salgs-kurv-sam';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,9 +26,19 @@ export class KurvService {
     return this.http.get<Kurv>(url);
   }
 
+  
+
   getKurven(kurv: Kurv) {
-    let laaneKurv1 = this.http.get<l>(`${this.apiUrl}/${kurv.FK_brugernavn}`);
-    let salgsKurv1 = 
+    forkJoin([
+      this.http.get<Kurv>(`${this.apiUrl}/${kurv.FK_brugernavn}`),
+      this.http.get<LaaneKurvSam>(`${this.apiUrl}/${kurv.FK_brugernavn}`),
+      this.http.get<SalgsKurvSam>(`${this.apiUrl}/${kurv.FK_brugernavn}`),
+    ]).subscribe(
+      data => {
+        this.kurv
+      }
+    );
+
   }
 
   getLaaneKurv(kurv: Kurv): Observable<Kurv> {
