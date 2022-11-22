@@ -3,7 +3,7 @@
     *ngFor="let Jeppe of Entity"
     style="margin: 0px 10%;" >
         <div class="MainDivImg">
-            <img class="Img123" id="ImgDisplay" (click)="PressOn(Jeppe)" src="{{Jeppe.billedeLink}}">
+            <img class="Img123" id="ImgDisplay" (click)="PressOn(Jeppe)" src="{{Jeppe.billedeLink}}" [(ngModel)]="Entity">
             <h2 Class="H2img" style="font-size: medium;">{{Jeppe.filmNavn}} <br/> {{Jeppe.pris}},-</h2>        
         </div>
     </div>
