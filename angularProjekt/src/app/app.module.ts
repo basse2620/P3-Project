@@ -14,8 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-bod.component';
 import { BuydisplayComponent } from './Component/BodyMenu/buydisplay/buydisplay.component';
-import { BuydisplaySubComponent } from './Component/BodyMenu/buydisplay-sub/buydisplay-sub.component';
-import { InformationscreenbodyComponent } from './Component/pickedsite/informationscreen/informationscreenbody/informationscreenbody.component'
+import { InformationscreenbodyComponent } from './Component/pickedsite/informationscreen/informationscreenbody/informationscreenbody.component';
+import { MainbodyPickedsiteComponent } from './Component/pickedsite/mainbody-pickedsite/mainbody-pickedsite.component';
 
 const appRoutes: Routes = [
   {path: '', component: BuydisplayComponent}
@@ -30,8 +30,8 @@ const appRoutes: Routes = [
     MasterBitchComponent,
     MainDadBodComponent,
     BuydisplayComponent,
-    BuydisplaySubComponent,
     InformationscreenbodyComponent,
+    MainbodyPickedsiteComponent,
   ],
   imports: [
     BrowserModule,
