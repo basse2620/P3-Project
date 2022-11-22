@@ -5,6 +5,7 @@ import { AddresseService } from '../../../services/addresse/addresse.service';
 import { Addresse } from 'src/app/interfaces/addresse';
 import { LaaneFilm } from 'src/app/interfaces/laane-film';
 import { LaaneFilmService } from 'src/app/services/laane-film/laane-film.service'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class BuydisplayComponent implements OnInit {
   constructor(
     private laanefilmService: LaaneFilmService,
     private laanebilledservice: LaaneBillederService,
-    private addresseservice: AddresseService) { }
+    private addresseservice: AddresseService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
