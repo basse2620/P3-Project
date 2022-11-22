@@ -22,8 +22,8 @@ export class LaaneKurvService {
     return this.http.get<LaaneKurv>(url);
   }
 
-  addLaaneKurv(LaaneKurv: LaaneKurv): Observable<LaaneKurv> {
-    return this.http.post<LaaneKurv>(this.apiUrl, LaaneKurv, httpOptions)
+  addLaaneKurv(laaneKurv: LaaneKurv): Observable<LaaneKurv> {
+    return this.http.post<LaaneKurv>(this.apiUrl, laaneKurv, httpOptions)
   }
 
   deleteLaaneKurv(laaneKurv: LaaneKurv): Observable<LaaneKurv> {
