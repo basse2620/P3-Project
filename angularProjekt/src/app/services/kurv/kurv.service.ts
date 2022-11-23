@@ -27,8 +27,8 @@ export class KurvService {
   getKurven(kurv: Kurv) {
     forkJoin([
       this.http.get<Kurv>(`${this.apiUrl}/${kurv.FK_brugernavn}`),
-      this.http.get<LaaneKurvSam>(`${this.apiUrl}/${kurv.FK_brugernavn}`),
-      this.http.get<SalgsKurvSam>(`${this.apiUrl}/${kurv.FK_brugernavn}`),
+      this.http.get<LaaneKurvSam>(`${this.apiUrl}/laane/${kurv.FK_brugernavn}`),
+      this.http.get<SalgsKurvSam>(`${this.apiUrl}/salgs/${kurv.FK_brugernavn}`),
     ]).subscribe(
       ([
         kurv,
