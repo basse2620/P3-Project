@@ -23,6 +23,11 @@ export class OrdreService {
     return this.http.get<Ordre[]>(this.apiUrl);
   }
 
+  getOrdreBruger(ordre: Ordre): Observable<Ordre[]> {
+    const url = `${this.apiUrl}/${ordre.FK_brugernavn}`
+    return this.http.get<Ordre[]>(url)
+  }
+
   getOrdren(ordre: Ordre) {
     forkJoin([
       this.http.get<Ordre>(`${this.apiUrl}/${ordre.FK_brugernavn}`),
@@ -57,5 +62,23 @@ export class OrdreService {
         salgsOrdre;
       }
     )
+  }
+
+  addOrdre(ordre: Ordre): Observable<Ordre> {
+    return this.http.post<Ordre>(this.apiUrl, ordre, httpOptions);
+  }
+
+  updateOrdre(ordre: Ordre): Observable<Ordre> {
+    return this.http.patch<Ordre>(this.apiUrl, ordre, httpOptions);
+  }
+
+  updateOrdrePris(ordre: Ordre): Observable<Ordre> {
+    const url = `${this.apiUrl}/pris`;
+    return this.http.patch<Ordre>(url, ordre, httpOptions);
+  }
+
+  updateOrdreStatus(ordre: Ordre): Observable<Ordre> {
+    const url = `${this.apiUrl}/status`;
+    return this.http.patch<Ordre>(url, ordre, httpOptions);
   }
 }
