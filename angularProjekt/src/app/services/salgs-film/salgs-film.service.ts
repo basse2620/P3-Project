@@ -15,30 +15,30 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SalgsFilmService {
-  private apiUrl = 'http://192.168.20.30:8090/laane-kurv';
+  private apiUrl = 'http://192.168.20.30:8090/salgs-film';
 
   constructor(private http: HttpClient) { }
 
-  getLaaneFilm(): Observable<SalgsFilm[]> {
+  getSalgsFilm(): Observable<SalgsFilm[]> {
     return this.http.get<SalgsFilm[]>(this.apiUrl)
   }
 
-  getLaaneFilmen(laaneFilm: SalgsFilm): Observable<SalgsFilm> {
-    const url = `${this.apiUrl}/${laaneFilm.PK_filmId}`;
+  getSalgsFilmen(salgsFilm: SalgsFilm): Observable<SalgsFilm> {
+    const url = `${this.apiUrl}/${salgsFilm.PK_filmId}`;
     return this.http.get<SalgsFilm>(url);
   }
 
-  getLaaneFilmGenre(salgsFilmGenreSam: SalgsFilmGenreSam): Observable<SalgsFilm> {
+  getSalgsFilmGenre(salgsFilmGenreSam: SalgsFilmGenreSam): Observable<SalgsFilm> {
     const url = `${this.apiUrl}/genre/${salgsFilmGenreSam.PK_genreId}`;
     return this.http.get<SalgsFilm>(url);
   }
 
-  getLaaneFilmInstruktoer(salgsFilmInstruktoerSam: SalgsFilmInstruktoerSam): Observable<SalgsFilm> {
+  getSalgsFilmInstruktoer(salgsFilmInstruktoerSam: SalgsFilmInstruktoerSam): Observable<SalgsFilm> {
     const url = `${this.apiUrl}/genre/${salgsFilmInstruktoerSam.PK_instruktoerId}`;
     return this.http.get<SalgsFilm>(url);
   }
 
-  addLaaneFilm(laaneFilm: SalgsFilm): Observable<SalgsFilm> {
-    return this.http.post<SalgsFilm>(this.apiUrl, laaneFilm, httpOptions)
+  addSalgsFilm(salgsFilm: SalgsFilm): Observable<SalgsFilm> {
+    return this.http.post<SalgsFilm>(this.apiUrl, salgsFilm, httpOptions)
   }
 }
