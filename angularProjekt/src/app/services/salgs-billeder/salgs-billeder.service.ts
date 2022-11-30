@@ -20,4 +20,13 @@ export class SalgsBillederService {
   getSaglsBilleder(): Observable<SalgsBilledere[]> {
     return this.http.get<SalgsBilledere[]>(this.apiUrl)
   }
+
+  getSalgsBilled(salgsBilledere: SalgsBilledere): Observable<SalgsBilledere> {
+    const url = `${this.apiUrl}/${salgsBilledere.FK_filmId}`;
+    return this.http.get<SalgsBilledere>(url);
+  }
+
+  addSalgsBilledere(salgsBilledere: SalgsBilledere): Observable<SalgsBilledere> {
+    return this.http.post<SalgsBilledere>(this.apiUrl, salgsBilledere, httpOptions)
+  }
 }
