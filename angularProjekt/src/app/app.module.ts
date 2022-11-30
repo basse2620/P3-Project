@@ -16,6 +16,11 @@ import { MainDadBodComponent } from './Component/BodyMenu/main-dad-bod/main-dad-
 import { BuydisplayComponent } from './Component/BodyMenu/buydisplay/buydisplay.component';
 import { InformationscreenbodyComponent } from './Component/pickedsite/informationscreen/informationscreenbody/informationscreenbody.component';
 import { MainbodyPickedsiteComponent } from './Component/pickedsite/mainbody-pickedsite/mainbody-pickedsite.component';
+import { HomeComponent } from './pages/home/home.component';
+import { KøbeFilmComponent } from './pages/købe-film/købe-film.component';
+import { LoginComonent } from './pages/login/login.component';
+import { RentdisplayComponent } from './Component/BodyMenu/rentdisplay/rentdisplay.component';
+import { RentComponent } from './pages/rent/rent.component';
 
 const appRoutes: Routes = [
   {path: '', component: BuydisplayComponent}
@@ -32,6 +37,11 @@ const appRoutes: Routes = [
     BuydisplayComponent,
     InformationscreenbodyComponent,
     MainbodyPickedsiteComponent,
+    HomeComponent,
+    KøbeFilmComponent,
+    LoginComonent,
+    RentdisplayComponent,
+    RentComponent
   ],
   imports: [
     BrowserModule,
