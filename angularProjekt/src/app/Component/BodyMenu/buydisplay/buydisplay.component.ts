@@ -23,7 +23,7 @@ export class BuydisplayComponent implements OnInit {
     private laanebilledservice: LaaneBillederService,
     private addresseservice: AddresseService,
     private router: Router) { }
-
+    //tester
   ngOnInit(): void {
 
     this.laanebilledservice.getLaaneBilleder().subscribe((lBs) => 
