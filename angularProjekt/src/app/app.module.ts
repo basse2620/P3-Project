@@ -21,6 +21,7 @@ import { KøbeFilmComponent } from './pages/købe-film/købe-film.component';
 import { LoginComonent } from './pages/login/login.component';
 import { RentdisplayComponent } from './Component/BodyMenu/rentdisplay/rentdisplay.component';
 import { RentComponent } from './pages/rent/rent.component';
+import { LogindisplayComponent } from './Component/BodyMenu/logindisplay/logindisplay.component';
 
 const appRoutes: Routes = [
   {path: '', component: BuydisplayComponent}
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     KøbeFilmComponent,
     LoginComonent,
     RentdisplayComponent,
-    RentComponent
+    RentComponent,
+    LogindisplayComponent
   ],
   imports: [
     BrowserModule,

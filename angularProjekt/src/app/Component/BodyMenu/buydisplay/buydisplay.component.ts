@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LaaneBillederService } from '../../../services/laane-billeder/laane-billeder.service'
-import { LaaneBilledere } from 'src/app/interfaces/laane-billedere';
+import { SalgsBillederService } from 'src/app/services/salgs-billeder/salgs-billeder.service';
+import { SalgsBilledere } from 'src/app/interfaces/salgs-billedere';
 import { AddresseService } from '../../../services/addresse/addresse.service';
 import { Addresse } from 'src/app/interfaces/addresse';
-import { LaaneFilm } from 'src/app/interfaces/laane-film';
-import { LaaneFilmService } from 'src/app/services/laane-film/laane-film.service'
+import { SalgsFilmService } from 'src/app/services/salgs-film/salgs-film.service';
+import { SalgsFilm } from 'src/app/interfaces/salgs-film';
 import { Router } from '@angular/router';
 
 
@@ -14,22 +14,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./buydisplay.component.css']
 })
 export class BuydisplayComponent implements OnInit {
-  lBs: LaaneBilledere[] = [];
+  lBs: SalgsBilledere[] = [];
   addre: Addresse[] =[];
-  Entity: LaaneFilm[] = [];
+  Entity: SalgsFilm[] = [];
 
   constructor(
-    private laanefilmService: LaaneFilmService,
-    private laanebilledservice: LaaneBillederService,
+    private salgsFilmService: SalgsFilmService,
+    private salgsBilledservice: SalgsBillederService,
     private addresseservice: AddresseService,
     private router: Router) { }
 
   ngOnInit(): void {
 
-    this.laanebilledservice.getLaaneBilleder().subscribe((lBs) => 
+    this.salgsBilledservice.getSalgsBilleder().subscribe((lBs) => 
     (this.lBs = lBs))
 
-    this.laanefilmService.getLaaneFilm().subscribe((Entity) => 
+    this.salgsFilmService.getSalgsFilm().subscribe((Entity) => 
     (this.Entity = Entity));
   
     this.addresseservice.getAddresse().subscribe((addre) =>

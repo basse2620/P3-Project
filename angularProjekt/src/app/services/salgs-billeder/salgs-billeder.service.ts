@@ -13,11 +13,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SalgsBillederService {
-  private apiUrl = 'http://192.168.20.30:8090/sagls-billeder';
+  private apiUrl = 'http://192.168.20.30:8090/salgs-billeder';
 
   constructor(private http: HttpClient) { }
 
-  getSaglsBilleder(): Observable<SalgsBilledere[]> {
+  getSalgsBilleder(): Observable<SalgsBilledere[]> {
     return this.http.get<SalgsBilledere[]>(this.apiUrl)
   }
 

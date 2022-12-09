@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBox {
+    width: 40%;
+    height: 80%;
+    border-radius: 36px;
+    border: 3px solid rgb(10, 68, 136);
+    box-shadow: -10px 10px 25px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.8s;
+    user-select: none;
+    overflow: auto;
+}
+
+.loginBox:hover {
+    box-shadow: -20px 20px 90px #000000;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+}
+
+.loginTitle {
+    font-family: 'Taviraj', serif;
+    font-size: 40px;
+    font-weight:600;
+    color: rgb(10, 68, 136);
+}
+
+.splitter {
+    width: 65%;
+    height: 1px;
+    background-color: rgb(168, 168, 176);
+}
+
+.formContainer {
+    width: 70%;
+    height: 50%;
+    font-family: 'Tauri', sans-serif;
+    font-size: 20px;
+    margin-bottom: 20%;
+}
+
+.formContainer input {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    margin-bottom: 15%;
+    margin-top: 1vh;
+    font-size: 20px;
+}
+
+.formButtonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formButton {
+    background-image: linear-gradient(rgb(13, 113, 231), rgb(1, 1, 1));
+    width: 35%;
+    height: 6vh;
+    border-radius: 8px;
+}
+
+.formButton button {
+    background-color: transparent;
+    font-family: 'Stick No Bills', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    text-shadow: -4px 4px 1px #000000;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.formButton button:hover {
+    background-color: rgba(0, 0, 0, 0.192);
+    text-shadow: -4px 8px 10px #000000;
+}
+
+.signUp {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5%;
+}
+
+.signUp a:visited {
+    color: blue;
+}

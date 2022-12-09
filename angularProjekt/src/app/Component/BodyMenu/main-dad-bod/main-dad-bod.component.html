@@ -1,1 +1,20 @@
-<app-buydisplay></app-buydisplay>
+<div class="container">
+    <div class="gridWrapper">
+        <div class="movieContainer">
+            <div class="moive" *ngFor="let Jeppe1 of Entity1">
+                <div class="movieContent">
+                    <img class="Img123" id="ImgDisplay" (click)="PressOn(Jeppe1)" src="{{Jeppe1.billedeLink}}">
+                    <div Class="H2img" style="font-size: medium;">{{Jeppe1.filmNavn}} <br /> {{Jeppe1.pris}},-</div>
+                </div>
+            </div>
+        </div>
+        <div class="movieContainer">
+            <div class="moive" *ngFor="let Jeppe2 of Entity2">
+                <div class="movieContent">
+                    <img class="Img123" id="ImgDisplay" (click)="PressOn(Jeppe2)" src="{{Jeppe2.billedeLink}}">
+                    <div Class="H2img" style="font-size: medium;">{{Jeppe2.filmNavn}} <br /> {{Jeppe2.pris}},-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

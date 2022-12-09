@@ -3,5 +3,6 @@ export interface SalgsFilm {
     filmNavn: string;
     pris: number;
     rabat: number;
-    stand: number;
+    stand: number;    
+    billedeLink: string;
 }
