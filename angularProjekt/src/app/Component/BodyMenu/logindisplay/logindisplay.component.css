@@ -7,10 +7,11 @@
 }
 
 .loginBox {
-    width: 40%;
-    height: 80%;
+    width: 50%;
+    height: 90%;
+    margin: 5%;
     border-radius: 36px;
-    border: 3px solid rgb(10, 68, 136);
+    border: 3px solid rgb(255, 255, 255);
     box-shadow: -10px 10px 25px black;
     display: flex;
     flex-direction: column;
@@ -36,9 +37,10 @@
 
 .loginTitle {
     font-family: 'Taviraj', serif;
-    font-size: 40px;
+    margin: 2.5%;
+    font-size: 200%;
     font-weight:600;
-    color: rgb(10, 68, 136);
+    color: rgb(255, 255, 255);
 }
 
 .splitter {
@@ -73,8 +75,8 @@
 }
 
 .formButton {
-    background-image: linear-gradient(rgb(13, 113, 231), rgb(1, 1, 1));
-    width: 35%;
+    background-image: linear-gradient(rgb(131, 131, 131), rgb(131, 131, 131));
+    width: 50%;
     height: 6vh;
     border-radius: 8px;
 }
@@ -82,7 +84,7 @@
 .formButton button {
     background-color: transparent;
     font-family: 'Stick No Bills', sans-serif;
-    font-size: 32px;
+    font-size: 125%;
     letter-spacing: 2px;
     text-shadow: -4px 4px 1px #000000;
     color: white;
